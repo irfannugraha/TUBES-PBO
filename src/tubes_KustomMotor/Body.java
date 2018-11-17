@@ -1,18 +1,17 @@
-package tubez;
+package tubes_KustomMotor;
 
-public class Body implements Color {
+public class Body extends Color {
     private String Merk;
     private int Tangki;
     private String Headlamp;
     private int Seat;
-    private String warna;
-    private String type;
     
-    public Body (String Merk, int Tangki, String Headlamp, int Seat) {
+    public Body(String Merk, int Tangki, String Headlamp, int Seat, String warna, String tipe) {
+        super(warna, tipe);
         this.Merk = Merk;
         this.Tangki = Tangki;
         this.Headlamp = Headlamp;
-        this.Seat = Seat;       
+        this.Seat = Seat;
     }
 
     public void setMerk(String Merk) {
@@ -45,11 +44,13 @@ public class Body implements Color {
 
     public int getSeat() {
         return Seat;
-    }
+    }  
     
-    public void setcolor(String color, String type){
-        this.warna = color;
-        this.type = type;
-    }
+    public String getcolor(){
+        return warna;
+    };
     
+    public String gettipe(){
+        return tipe;
+    };
 }

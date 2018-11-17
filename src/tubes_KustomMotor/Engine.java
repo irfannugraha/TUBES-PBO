@@ -1,21 +1,15 @@
-package tubez;
+package tubes_KustomMotor;
 
-public class Engine implements Color {
+public class Engine extends Color {
     private int cc;
     private String merk;
     private int cylinder;
-    private String warna;
-    private String type;
 
-    public Engine(int cc, String merk, int cylinder) {
+    public Engine(int cc, String merk, int cylinder, String warna, String tipe) {
+        super(warna, tipe);
         this.cc = cc;
         this.merk = merk;
         this.cylinder = cylinder;
-    }
-
-    public void setcolor(String color, String type){
-        this.warna = color;
-        this.type = type;
     }
     
     public int getCc() {
@@ -29,4 +23,12 @@ public class Engine implements Color {
     public int getCylinder() {
         return cylinder;
     }
+    
+    public String getcolor(){
+        return warna;
+    };
+    
+    public String gettipe(){
+        return tipe;
+    };    
 }

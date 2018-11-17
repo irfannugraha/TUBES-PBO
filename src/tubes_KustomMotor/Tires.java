@@ -1,14 +1,13 @@
-package tubez;
+package tubes_KustomMotor;
 
-public class Tires implements Color {
+public class Tires extends Color {
     private String Velg;
     private String Type;
     private int diameter;
     private int lebar;
-    private String warna;
-    private String type;
     
-    public Tires(String Velg, String Type, int diameter, int lebar) {
+    public Tires(String Velg, String Type, int diameter, int lebar, String warna, String tipe) {
+        super(warna, tipe);
         this.Velg = Velg;
         this.Type = Type;
         this.diameter = diameter;
@@ -46,11 +45,12 @@ public class Tires implements Color {
     public int getLebar() {
         return lebar;
     }
+
+    public String getcolor(){
+        return warna;
+    };
     
-    public void setcolor(String color, String type){
-        this.warna = color;
-        this.type = type;
-    }
-    
-    
+    public String gettipe(){
+        return tipe;
+    }; 
 }
