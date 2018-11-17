@@ -14,22 +14,6 @@ public class Tires extends Color {
         this.lebar = lebar;
     }
 
-    public void setVelg(String Velg) {
-        this.Velg = Velg;
-    }
-
-    public void setType(String Type) {
-        this.Type = Type;
-    }
-
-    public void setDiameter(int diameter) {
-        this.diameter = diameter;
-    }
-
-    public void setLebar(int lebar) {
-        this.lebar = lebar;
-    }
-
     public String getVelg() {
         return Velg;
     }

@@ -14,22 +14,6 @@ public class Body extends Color {
         this.Seat = Seat;
     }
 
-    public void setMerk(String Merk) {
-        this.Merk = Merk;
-    }
-
-    public void setTangki(int Tangki) {
-        this.Tangki = Tangki;
-    }
-
-    public void setHeadlamp(String Headlamp) {
-        this.Headlamp = Headlamp;
-    }
-
-    public void setSeat(int Seat) {
-        this.Seat = Seat;
-    }
-
     public String getMerk() {
         return Merk;
     }
