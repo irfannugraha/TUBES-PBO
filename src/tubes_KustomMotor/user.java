@@ -8,4 +8,13 @@ public class user {
         username = user;
         password = pass;
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+    
 }

@@ -3,6 +3,7 @@ package tubes_KustomMotor;
 public class motor {
     private String nama;
     private String merk;
+    
     private Engine engine;
     private Tires tires;
     private Body body;
