@@ -1,12 +1,14 @@
 package GUI;
 
+import Class.*;
 import javax.swing.Icon;
 import javax.swing.JOptionPane;
 
 public class PilihMotor extends javax.swing.JFrame {
-
-    private char tipemotor = 'm';
-    private String selectedbadan;
+   
+    private String TipeMotor = null;
+    private String NamaMotor;
+    private int counter = 0;
     
     public PilihMotor() {
         initComponents();
@@ -23,25 +25,20 @@ public class PilihMotor extends javax.swing.JFrame {
         btn_mesin = new javax.swing.JButton();
         btn_selesai = new javax.swing.JButton();
         Mesin_pages = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        cc_default = new javax.swing.JButton();
+        cc_sport = new javax.swing.JComboBox();
+        cc_matic = new javax.swing.JComboBox();
+        cc_cub = new javax.swing.JComboBox();
         Knalpot_cb = new javax.swing.JComboBox();
-        jLabel5 = new javax.swing.JLabel();
         Cylinder_cb = new javax.swing.JComboBox();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         background2 = new javax.swing.JButton();
-        Roda_pages = new javax.swing.JPanel();
-        Velg_cb = new javax.swing.JComboBox();
-        Warna_roda_cb = new javax.swing.JComboBox();
-        Ban_cb = new javax.swing.JComboBox<>();
-        Diameter_tf = new javax.swing.JTextField();
-        Lebar_tf = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        Roda_back = new javax.swing.JButton();
+        Selesai_pages = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        Input_btn = new javax.swing.JButton();
+        background4 = new javax.swing.JButton();
         Badan_pages = new javax.swing.JPanel();
         Seat_cb = new javax.swing.JComboBox();
         jLabel10 = new javax.swing.JLabel();
@@ -56,7 +53,21 @@ public class PilihMotor extends javax.swing.JFrame {
         Badan_sport_cb = new javax.swing.JComboBox();
         jLabel15 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        Badan_back = new javax.swing.JButton();
+        Badan_back1 = new javax.swing.JButton();
+        Roda_pages = new javax.swing.JPanel();
+        Velg_cb = new javax.swing.JComboBox();
+        Warna_roda_cb = new javax.swing.JComboBox();
+        Ban_cb = new javax.swing.JComboBox<>();
+        Diameter_tf = new javax.swing.JTextField();
+        Lebar_tf = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        Roda_back = new javax.swing.JButton();
         Knalpot_pict = new javax.swing.JButton();
         Body_pict = new javax.swing.JButton();
         Roda_pict = new javax.swing.JButton();
@@ -69,12 +80,9 @@ public class PilihMotor extends javax.swing.JFrame {
         btn_cub = new javax.swing.JButton();
         btn_matic = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        tf_nama_motor = new javax.swing.JTextField();
-        cc_default = new javax.swing.JButton();
-        cc_matic = new javax.swing.JComboBox();
-        cc_cub = new javax.swing.JComboBox();
-        cc_sport = new javax.swing.JComboBox();
+        Merek_cb = new javax.swing.JComboBox();
+        jLabel6 = new javax.swing.JLabel();
+        nama_motor_tf = new javax.swing.JTextField();
         background = new javax.swing.JButton();
         matic = new javax.swing.JButton();
         cub = new javax.swing.JButton();
@@ -130,17 +138,43 @@ public class PilihMotor extends javax.swing.JFrame {
         btn_selesai.setBorder(null);
         btn_selesai.setBorderPainted(false);
         btn_selesai.setContentAreaFilled(false);
+        btn_selesai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_selesaiActionPerformed(evt);
+            }
+        });
         Kustom_pages.add(btn_selesai);
         btn_selesai.setBounds(530, 0, 180, 40);
 
         Mesin_pages.setLayout(null);
 
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("Kenalpot");
-        Mesin_pages.add(jLabel4);
-        jLabel4.setBounds(30, 70, 100, 17);
+        cc_default.setBackground(new java.awt.Color(0, 0, 0));
+        cc_default.setForeground(new java.awt.Color(255, 255, 255));
+        cc_default.setText("Pilih motor dulu");
+        cc_default.setBorder(null);
+        Mesin_pages.add(cc_default);
+        cc_default.setBounds(150, 150, 130, 20);
+
+        cc_sport.setBackground(new java.awt.Color(0, 0, 0));
+        cc_sport.setForeground(new java.awt.Color(255, 255, 255));
+        cc_sport.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "150", "200", "250", "600", "850", "1000" }));
+        cc_sport.setBorder(null);
+        Mesin_pages.add(cc_sport);
+        cc_sport.setBounds(150, 150, 127, 18);
+
+        cc_matic.setBackground(new java.awt.Color(0, 0, 0));
+        cc_matic.setForeground(new java.awt.Color(255, 255, 255));
+        cc_matic.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "100", "125", "150", "200", "250", "600" }));
+        cc_matic.setBorder(null);
+        Mesin_pages.add(cc_matic);
+        cc_matic.setBounds(150, 150, 127, 18);
+
+        cc_cub.setBackground(new java.awt.Color(0, 0, 0));
+        cc_cub.setForeground(new java.awt.Color(255, 255, 255));
+        cc_cub.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "50", "100", "110", "125", "150", "200" }));
+        cc_cub.setBorder(null);
+        Mesin_pages.add(cc_cub);
+        cc_cub.setBounds(150, 150, 127, 18);
 
         Knalpot_cb.setBackground(new java.awt.Color(0, 0, 0));
         Knalpot_cb.setForeground(new java.awt.Color(255, 255, 255));
@@ -154,19 +188,33 @@ public class PilihMotor extends javax.swing.JFrame {
         Mesin_pages.add(Knalpot_cb);
         Knalpot_cb.setBounds(150, 70, 127, 18);
 
-        jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel5.setText("Cylinder");
-        Mesin_pages.add(jLabel5);
-        jLabel5.setBounds(20, 110, 108, 17);
-
         Cylinder_cb.setBackground(new java.awt.Color(0, 0, 0));
         Cylinder_cb.setForeground(new java.awt.Color(255, 255, 255));
         Cylinder_cb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "4", "6", "8" }));
         Cylinder_cb.setBorder(null);
         Mesin_pages.add(Cylinder_cb);
         Cylinder_cb.setBounds(150, 110, 127, 18);
+
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel3.setText("Kapasitas mesin");
+        Mesin_pages.add(jLabel3);
+        jLabel3.setBounds(20, 150, 108, 17);
+
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel4.setText("Kenalpot");
+        Mesin_pages.add(jLabel4);
+        jLabel4.setBounds(30, 70, 100, 17);
+
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel5.setText("Cylinder");
+        Mesin_pages.add(jLabel5);
+        jLabel5.setBounds(20, 110, 108, 17);
 
         background2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Mesin_page.jpg"))); // NOI18N
         background2.setText("jButton1");
@@ -186,6 +234,171 @@ public class PilihMotor extends javax.swing.JFrame {
         Kustom_pages.add(Mesin_pages);
         Mesin_pages.setBounds(0, 0, 720, 210);
 
+        Selesai_pages.setLayout(null);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Apakah anda yakin dengan data ini?");
+        Selesai_pages.add(jLabel1);
+        jLabel1.setBounds(180, 90, 350, 30);
+
+        Input_btn.setBackground(new java.awt.Color(0, 0, 0));
+        Input_btn.setForeground(new java.awt.Color(255, 255, 255));
+        Input_btn.setText("Ya");
+        Input_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Input_btnActionPerformed(evt);
+            }
+        });
+        Selesai_pages.add(Input_btn);
+        Input_btn.setBounds(320, 150, 73, 23);
+
+        background4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Selesai_page.jpg"))); // NOI18N
+        background4.setText("jButton1");
+        background4.setBorder(null);
+        background4.setBorderPainted(false);
+        background4.setContentAreaFilled(false);
+        background4.setDefaultCapable(false);
+        background4.setFocusPainted(false);
+        background4.setFocusable(false);
+        background4.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        background4.setPreferredSize(new java.awt.Dimension(720, 480));
+        background4.setRolloverEnabled(false);
+        background4.setSelected(true);
+        Selesai_pages.add(background4);
+        background4.setBounds(0, 0, 730, 210);
+
+        Kustom_pages.add(Selesai_pages);
+        Selesai_pages.setBounds(0, 0, 720, 210);
+
+        Badan_pages.setLayout(null);
+
+        Seat_cb.setBackground(new java.awt.Color(0, 0, 0));
+        Seat_cb.setForeground(new java.awt.Color(255, 255, 255));
+        Seat_cb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Standart", "Single seat" }));
+        Seat_cb.setBorder(null);
+        Badan_pages.add(Seat_cb);
+        Seat_cb.setBounds(500, 70, 127, 20);
+
+        jLabel10.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel10.setText("Badan");
+        Badan_pages.add(jLabel10);
+        jLabel10.setBounds(30, 70, 100, 20);
+
+        jLabel14.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel14.setText("Headlamp");
+        Badan_pages.add(jLabel14);
+        jLabel14.setBounds(370, 110, 108, 20);
+
+        Headlamp_cb.setBackground(new java.awt.Color(0, 0, 0));
+        Headlamp_cb.setForeground(new java.awt.Color(255, 255, 255));
+        Headlamp_cb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "LED", "Bohlam", "Strobo", "Flare" }));
+        Headlamp_cb.setBorder(null);
+        Badan_pages.add(Headlamp_cb);
+        Headlamp_cb.setBounds(500, 110, 127, 20);
+
+        jLabel11.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel11.setText("Tanki");
+        Badan_pages.add(jLabel11);
+        jLabel11.setBounds(20, 110, 108, 20);
+
+        jLabel13.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel13.setText("Seat");
+        Badan_pages.add(jLabel13);
+        jLabel13.setBounds(380, 70, 100, 20);
+
+        Warna_Badan_cb.setBackground(new java.awt.Color(0, 0, 0));
+        Warna_Badan_cb.setForeground(new java.awt.Color(255, 255, 255));
+        Warna_Badan_cb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Putih", "Hitam", "Biru", "Hijau", "Merah" }));
+        Warna_Badan_cb.setBorder(null);
+        Warna_Badan_cb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Warna_Badan_cbActionPerformed(evt);
+            }
+        });
+        Badan_pages.add(Warna_Badan_cb);
+        Warna_Badan_cb.setBounds(150, 150, 127, 20);
+        Badan_pages.add(Tangki_tf);
+        Tangki_tf.setBounds(150, 110, 90, 20);
+
+        Badan_matic_cb.setBackground(new java.awt.Color(0, 0, 0));
+        Badan_matic_cb.setForeground(new java.awt.Color(255, 255, 255));
+        Badan_matic_cb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<Kosong>", "Vario", "NM4 Vultus", "TMAX" }));
+        Badan_matic_cb.setBorder(null);
+        Badan_matic_cb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Badan_matic_cbActionPerformed(evt);
+            }
+        });
+        Badan_pages.add(Badan_matic_cb);
+        Badan_matic_cb.setBounds(150, 70, 127, 20);
+
+        Badan_cub_cb.setBackground(new java.awt.Color(0, 0, 0));
+        Badan_cub_cb.setForeground(new java.awt.Color(255, 255, 255));
+        Badan_cub_cb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<Kosong>", "Super Cub", "Supra GTR", "Smash Titan" }));
+        Badan_cub_cb.setBorder(null);
+        Badan_cub_cb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Badan_cub_cbActionPerformed(evt);
+            }
+        });
+        Badan_pages.add(Badan_cub_cb);
+        Badan_cub_cb.setBounds(150, 70, 127, 20);
+
+        Badan_sport_cb.setBackground(new java.awt.Color(0, 0, 0));
+        Badan_sport_cb.setForeground(new java.awt.Color(255, 255, 255));
+        Badan_sport_cb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<Kosong>", "YSX R6", "Super Duke", "Multistrada", " " }));
+        Badan_sport_cb.setBorder(null);
+        Badan_sport_cb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Badan_sport_cbActionPerformed(evt);
+            }
+        });
+        Badan_pages.add(Badan_sport_cb);
+        Badan_sport_cb.setBounds(150, 70, 127, 20);
+
+        jLabel15.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel15.setText("Liter");
+        jLabel15.setToolTipText("");
+        Badan_pages.add(jLabel15);
+        jLabel15.setBounds(240, 110, 40, 20);
+
+        jLabel12.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel12.setText("Warna");
+        Badan_pages.add(jLabel12);
+        jLabel12.setBounds(20, 150, 108, 20);
+
+        Badan_back1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/badan_page_1.jpg"))); // NOI18N
+        Badan_back1.setText("jButton1");
+        Badan_back1.setBorder(null);
+        Badan_back1.setBorderPainted(false);
+        Badan_back1.setContentAreaFilled(false);
+        Badan_back1.setDefaultCapable(false);
+        Badan_back1.setFocusPainted(false);
+        Badan_back1.setFocusable(false);
+        Badan_back1.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        Badan_back1.setPreferredSize(new java.awt.Dimension(720, 480));
+        Badan_back1.setRolloverEnabled(false);
+        Badan_back1.setSelected(true);
+        Badan_pages.add(Badan_back1);
+        Badan_back1.setBounds(0, 0, 730, 210);
+
+        Kustom_pages.add(Badan_pages);
+        Badan_pages.setBounds(0, 0, 720, 210);
+
         Roda_pages.setLayout(null);
 
         Velg_cb.setBackground(new java.awt.Color(0, 0, 0));
@@ -202,7 +415,7 @@ public class PilihMotor extends javax.swing.JFrame {
 
         Warna_roda_cb.setBackground(new java.awt.Color(0, 0, 0));
         Warna_roda_cb.setForeground(new java.awt.Color(255, 255, 255));
-        Warna_roda_cb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Putih", "Hitam", "Biru", "Hijau", "Merah" }));
+        Warna_roda_cb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Putih", "Hitam", "Emas", "Perak", "Merah" }));
         Warna_roda_cb.setBorder(null);
         Warna_roda_cb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -294,133 +507,6 @@ public class PilihMotor extends javax.swing.JFrame {
         Kustom_pages.add(Roda_pages);
         Roda_pages.setBounds(0, 0, 720, 210);
 
-        Badan_pages.setLayout(null);
-
-        Seat_cb.setBackground(new java.awt.Color(0, 0, 0));
-        Seat_cb.setForeground(new java.awt.Color(255, 255, 255));
-        Seat_cb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Standart", "Single seat" }));
-        Seat_cb.setBorder(null);
-        Badan_pages.add(Seat_cb);
-        Seat_cb.setBounds(500, 70, 127, 20);
-
-        jLabel10.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel10.setText("Badan");
-        Badan_pages.add(jLabel10);
-        jLabel10.setBounds(30, 70, 100, 20);
-
-        jLabel14.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel14.setText("Headlamp");
-        Badan_pages.add(jLabel14);
-        jLabel14.setBounds(370, 110, 108, 20);
-
-        Headlamp_cb.setBackground(new java.awt.Color(0, 0, 0));
-        Headlamp_cb.setForeground(new java.awt.Color(255, 255, 255));
-        Headlamp_cb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "LED", "Bohlam", "Strobo", "Flare" }));
-        Headlamp_cb.setBorder(null);
-        Badan_pages.add(Headlamp_cb);
-        Headlamp_cb.setBounds(500, 110, 127, 20);
-
-        jLabel11.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel11.setText("Tanki");
-        Badan_pages.add(jLabel11);
-        jLabel11.setBounds(20, 110, 108, 20);
-
-        jLabel13.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel13.setText("Seat");
-        Badan_pages.add(jLabel13);
-        jLabel13.setBounds(380, 70, 100, 20);
-
-        Warna_Badan_cb.setBackground(new java.awt.Color(0, 0, 0));
-        Warna_Badan_cb.setForeground(new java.awt.Color(255, 255, 255));
-        Warna_Badan_cb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Putih", "Hitam", "Biru", "Hijau", "Merah" }));
-        Warna_Badan_cb.setBorder(null);
-        Warna_Badan_cb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Warna_Badan_cbActionPerformed(evt);
-            }
-        });
-        Badan_pages.add(Warna_Badan_cb);
-        Warna_Badan_cb.setBounds(150, 150, 127, 20);
-        Badan_pages.add(Tangki_tf);
-        Tangki_tf.setBounds(150, 110, 90, 20);
-
-        Badan_matic_cb.setBackground(new java.awt.Color(0, 0, 0));
-        Badan_matic_cb.setForeground(new java.awt.Color(255, 255, 255));
-        Badan_matic_cb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<Kosong>", "Vario", "NM4 Vultus", "TMAX" }));
-        Badan_matic_cb.setBorder(null);
-        Badan_matic_cb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Badan_matic_cbActionPerformed(evt);
-            }
-        });
-        Badan_pages.add(Badan_matic_cb);
-        Badan_matic_cb.setBounds(150, 70, 127, 20);
-
-        Badan_cub_cb.setBackground(new java.awt.Color(0, 0, 0));
-        Badan_cub_cb.setForeground(new java.awt.Color(255, 255, 255));
-        Badan_cub_cb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<Kosong>", "Super Cub", "Supra GTR", "Smash Titan" }));
-        Badan_cub_cb.setBorder(null);
-        Badan_cub_cb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Badan_cub_cbActionPerformed(evt);
-            }
-        });
-        Badan_pages.add(Badan_cub_cb);
-        Badan_cub_cb.setBounds(150, 70, 127, 20);
-
-        Badan_sport_cb.setBackground(new java.awt.Color(0, 0, 0));
-        Badan_sport_cb.setForeground(new java.awt.Color(255, 255, 255));
-        Badan_sport_cb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<Kosong>", "anu", "anu", "anu" }));
-        Badan_sport_cb.setBorder(null);
-        Badan_sport_cb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Badan_sport_cbActionPerformed(evt);
-            }
-        });
-        Badan_pages.add(Badan_sport_cb);
-        Badan_sport_cb.setBounds(150, 70, 127, 20);
-
-        jLabel15.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel15.setText("Liter");
-        jLabel15.setToolTipText("");
-        Badan_pages.add(jLabel15);
-        jLabel15.setBounds(240, 110, 40, 20);
-
-        jLabel12.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel12.setText("Warna");
-        Badan_pages.add(jLabel12);
-        jLabel12.setBounds(20, 150, 108, 20);
-
-        Badan_back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/badan_page_1.jpg"))); // NOI18N
-        Badan_back.setText("jButton1");
-        Badan_back.setBorder(null);
-        Badan_back.setBorderPainted(false);
-        Badan_back.setContentAreaFilled(false);
-        Badan_back.setDefaultCapable(false);
-        Badan_back.setFocusPainted(false);
-        Badan_back.setFocusable(false);
-        Badan_back.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        Badan_back.setPreferredSize(new java.awt.Dimension(720, 480));
-        Badan_back.setRolloverEnabled(false);
-        Badan_back.setSelected(true);
-        Badan_pages.add(Badan_back);
-        Badan_back.setBounds(0, 0, 730, 210);
-
-        Kustom_pages.add(Badan_pages);
-        Badan_pages.setBounds(0, 0, 720, 210);
-
         Knalpot_pict.setBorder(null);
         Knalpot_pict.setBorderPainted(false);
         Knalpot_pict.setContentAreaFilled(false);
@@ -435,6 +521,11 @@ public class PilihMotor extends javax.swing.JFrame {
         Knalpot_pict.setRequestFocusEnabled(false);
         Knalpot_pict.setRolloverEnabled(false);
         Knalpot_pict.setVerifyInputWhenFocusTarget(false);
+        Knalpot_pict.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Knalpot_pictActionPerformed(evt);
+            }
+        });
         Kustom_pages.add(Knalpot_pict);
         Knalpot_pict.setBounds(0, 0, 730, 480);
 
@@ -571,48 +662,27 @@ public class PilihMotor extends javax.swing.JFrame {
         PilihMotor_pages.add(jLabel2);
         jLabel2.setBounds(220, 370, 100, 17);
 
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Kapasitas mesin");
-        PilihMotor_pages.add(jLabel3);
-        jLabel3.setBounds(210, 410, 108, 17);
+        Merek_cb.setBackground(new java.awt.Color(0, 0, 0));
+        Merek_cb.setForeground(new java.awt.Color(255, 255, 255));
+        Merek_cb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<kosong>", "Kawsakiti", "Bunda", "Yamahmud", "Sizuka", "Ducape", "Mustibisha" }));
+        Merek_cb.setBorder(null);
+        PilihMotor_pages.add(Merek_cb);
+        Merek_cb.setBounds(340, 410, 127, 18);
 
-        tf_nama_motor.setBackground(new java.awt.Color(0, 0, 0));
-        tf_nama_motor.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        tf_nama_motor.setForeground(new java.awt.Color(255, 255, 255));
-        tf_nama_motor.setAutoscrolls(false);
-        tf_nama_motor.setBorder(null);
-        PilihMotor_pages.add(tf_nama_motor);
-        tf_nama_motor.setBounds(340, 370, 127, 20);
+        jLabel6.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel6.setText("Merk Mesin");
+        PilihMotor_pages.add(jLabel6);
+        jLabel6.setBounds(210, 410, 108, 17);
 
-        cc_default.setBackground(new java.awt.Color(0, 0, 0));
-        cc_default.setForeground(new java.awt.Color(255, 255, 255));
-        cc_default.setText("Pilih motor dulu");
-        cc_default.setBorder(null);
-        PilihMotor_pages.add(cc_default);
-        cc_default.setBounds(340, 410, 130, 20);
-
-        cc_matic.setBackground(new java.awt.Color(0, 0, 0));
-        cc_matic.setForeground(new java.awt.Color(255, 255, 255));
-        cc_matic.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "100", "125", "150", "200", "250", "600" }));
-        cc_matic.setBorder(null);
-        PilihMotor_pages.add(cc_matic);
-        cc_matic.setBounds(340, 410, 127, 18);
-
-        cc_cub.setBackground(new java.awt.Color(0, 0, 0));
-        cc_cub.setForeground(new java.awt.Color(255, 255, 255));
-        cc_cub.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "50", "100", "110", "125", "150", "200" }));
-        cc_cub.setBorder(null);
-        PilihMotor_pages.add(cc_cub);
-        cc_cub.setBounds(340, 410, 127, 18);
-
-        cc_sport.setBackground(new java.awt.Color(0, 0, 0));
-        cc_sport.setForeground(new java.awt.Color(255, 255, 255));
-        cc_sport.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "150", "200", "250", "600", "850", "1000" }));
-        cc_sport.setBorder(null);
-        PilihMotor_pages.add(cc_sport);
-        cc_sport.setBounds(340, 410, 127, 18);
+        nama_motor_tf.setBackground(new java.awt.Color(0, 0, 0));
+        nama_motor_tf.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        nama_motor_tf.setForeground(new java.awt.Color(255, 255, 255));
+        nama_motor_tf.setAutoscrolls(false);
+        nama_motor_tf.setBorder(null);
+        PilihMotor_pages.add(nama_motor_tf);
+        nama_motor_tf.setBounds(340, 370, 127, 20);
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/2.jpg"))); // NOI18N
         background.setText("jButton1");
@@ -677,6 +747,9 @@ public class PilihMotor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+///ACTION PERFORMED
+//Tampilan pemilihan tipe motor
+    //Mengubah UI ketika menekan tombol MATIC
     private void btn_maticActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_maticActionPerformed
         matic.setVisible(true);
         cub.setVisible(false);
@@ -688,9 +761,9 @@ public class PilihMotor extends javax.swing.JFrame {
         cc_sport.setVisible(false);
         cc_default.setVisible(false);
         
-        tipemotor = 'm';
+        TipeMotor = "Matic";
     }//GEN-LAST:event_btn_maticActionPerformed
-
+    //Mengubah UI ketika menekan tombol CUB
     private void btn_cubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cubActionPerformed
         matic.setVisible(false);
         cub.setVisible(true);
@@ -702,9 +775,9 @@ public class PilihMotor extends javax.swing.JFrame {
         cc_sport.setVisible(false);
         cc_default.setVisible(false);
         
-        tipemotor = 'c';
+        TipeMotor = "Cub";
     }//GEN-LAST:event_btn_cubActionPerformed
-
+    //Mengubah UI ketika menekan tombol SPORT
     private void btn_sportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sportActionPerformed
         matic.setVisible(false);
         cub.setVisible(false);
@@ -716,87 +789,73 @@ public class PilihMotor extends javax.swing.JFrame {
         cc_sport.setVisible(true);
         cc_default.setVisible(false);
         
-        tipemotor = 's';
+        TipeMotor = "Sport";
     }//GEN-LAST:event_btn_sportActionPerformed
-
+    //Mengubah UI ke tampilan memilih motor ketika user telah mengisi semuanya
     private void btn_nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nextActionPerformed
-        if(cc_default.isVisible()){
-            JOptionPane.showMessageDialog(null, "Anda Belum Memilih Motor");
+        if(cc_default.isVisible() || (Merek_cb.getSelectedIndex() == 0) || (nama_motor_tf.getText() == null) ){
+            JOptionPane.showMessageDialog(null, "Mohon isi semua data");
         }
         else{
             PilihMotor_pages.setVisible(false);
             Kustom_pages.setVisible(true);
-            if(tipemotor == 'm'){
+            if(TipeMotor == "matic"){
                 Badan_matic_cb.setVisible(true);
                 Badan_cub_cb.setVisible(false);
-                Badan_sport_cb.setVisible(false);            
+                Badan_sport_cb.setVisible(false);                
             }
-            if(tipemotor == 'c'){
-                Badan_matic_cb.setVisible(false);
+            if(TipeMotor == "Cub"){
                 Badan_cub_cb.setVisible(true);
-                Badan_sport_cb.setVisible(false);
+                Badan_matic_cb.setVisible(false);
+                Badan_sport_cb.setVisible(false);                
             }
-            if(tipemotor == 's'){
+            if(TipeMotor == "Sport"){
+                Badan_sport_cb.setVisible(true);                
                 Badan_matic_cb.setVisible(false);
                 Badan_cub_cb.setVisible(false);
-                Badan_sport_cb.setVisible(true);                
             }
         }
     }//GEN-LAST:event_btn_nextActionPerformed
-
-    
+        
+//Tampilan pemilihan komponen motor
+    //Mengubah gambar KNALPOT sesuai pilihan user
     private void Knalpot_cbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Knalpot_cbActionPerformed
         if(Knalpot_cb.getSelectedIndex() == 0){
             Knalpot_pict.setIcon( new javax.swing.ImageIcon(getClass().getResource("")));
         }else
         Knalpot_pict.setIcon( new javax.swing.ImageIcon(getClass().getResource("/image/motor/Knalpot "+ Knalpot_cb.getSelectedItem() +".png")));
     }//GEN-LAST:event_Knalpot_cbActionPerformed
-
-    
+    //mengubah tampilan ke pemilihan komponen BADAN
     private void btn_badanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_badanActionPerformed
         Mesin_pages.setVisible(false);
         Badan_pages.setVisible(true);
         Roda_pages.setVisible(false);
+        Selesai_pages.setVisible(false);
     }//GEN-LAST:event_btn_badanActionPerformed
-
+    //mengubah tampilan ke pemilihan komponen RODA
     private void btn_rodaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_rodaActionPerformed
         Mesin_pages.setVisible(false);
         Badan_pages.setVisible(false);
         Roda_pages.setVisible(true);
+        Selesai_pages.setVisible(false);
+        
     }//GEN-LAST:event_btn_rodaActionPerformed
-
+    //mengubah tampilan ke pemilihan komponen MESIN
     private void btn_mesinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mesinActionPerformed
         Mesin_pages.setVisible(true);
         Badan_pages.setVisible(false);
         Roda_pages.setVisible(false);
+        Selesai_pages.setVisible(false);
     }//GEN-LAST:event_btn_mesinActionPerformed
 
-    
-    private void Badan_matic_cbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Badan_matic_cbActionPerformed
-        if(Badan_matic_cb.getSelectedIndex() == 0){
-            Body_pict.setIcon( new javax.swing.ImageIcon(getClass().getResource("")));
-        }else        
-            Body_pict.setIcon( new javax.swing.ImageIcon( getClass().getResource("/image/motor/Body "+ Badan_matic_cb.getSelectedItem() +" ("+ Warna_Badan_cb.getSelectedIndex() +").png" )));
-        
-        selectedbadan = Badan_matic_cb.getSelectedItem().toString();
-    }//GEN-LAST:event_Badan_matic_cbActionPerformed
-
-    private void Badan_cub_cbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Badan_cub_cbActionPerformed
-        if(Badan_cub_cb.getSelectedIndex() == 0){
-            Body_pict.setIcon( new javax.swing.ImageIcon(getClass().getResource("")));
-        }else        
-        Body_pict.setIcon( new javax.swing.ImageIcon( getClass().getResource("/image/motor/Body "+ Badan_cub_cb.getSelectedItem() +" ("+ Warna_Badan_cb.getSelectedIndex() +").png" )));
-        
-        selectedbadan = Badan_cub_cb.getSelectedItem().toString();
-    }//GEN-LAST:event_Badan_cub_cbActionPerformed
-
+   //mengubah gambar VELG sesuai pilihan user
     private void Velg_cbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Velg_cbActionPerformed
         if(Velg_cb.getSelectedIndex() == 0){
             Velg_pict.setIcon( new javax.swing.ImageIcon(getClass().getResource("")));
         }else
         Velg_pict.setIcon( new javax.swing.ImageIcon( getClass().getResource("/image/motor/Velg "+ Velg_cb.getSelectedItem() +" ("+ Warna_roda_cb.getSelectedIndex() +").png" )) );
     }//GEN-LAST:event_Velg_cbActionPerformed
-
+    //mengubah gambar BAN sesuai pilihan user
     private void Ban_cbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ban_cbActionPerformed
         if(Ban_cb.getSelectedIndex() == 0){
             Roda_pict.setIcon( new javax.swing.ImageIcon(getClass().getResource("")));
@@ -804,17 +863,7 @@ public class PilihMotor extends javax.swing.JFrame {
         Roda_pict.setIcon( new javax.swing.ImageIcon( getClass().getResource("/image/motor/Ban "+ Ban_cb.getSelectedItem() +".png" )) );
     }//GEN-LAST:event_Ban_cbActionPerformed
 
-    private void Badan_sport_cbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Badan_sport_cbActionPerformed
-        
-    }//GEN-LAST:event_Badan_sport_cbActionPerformed
-
-    private void Warna_Badan_cbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Warna_Badan_cbActionPerformed
-        if( Badan_matic_cb.getSelectedIndex() == 0 && Badan_cub_cb.getSelectedIndex() == 0 && Badan_sport_cb.getSelectedIndex() == 0){
-            Body_pict.setIcon( new javax.swing.ImageIcon(getClass().getResource("")));
-        }else
-            Body_pict.setIcon( new javax.swing.ImageIcon( getClass().getResource( "/image/motor/Body "+ selectedbadan +" ("+ Warna_Badan_cb.getSelectedIndex() +").png" )));
-    }//GEN-LAST:event_Warna_Badan_cbActionPerformed
-
+   //mengubah WARNA RODA sesuai pilihan user
     private void Warna_roda_cbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Warna_roda_cbActionPerformed
         if(Velg_cb.getSelectedIndex() == 0){
             Velg_pict.setIcon( new javax.swing.ImageIcon(getClass().getResource("")));
@@ -822,8 +871,64 @@ public class PilihMotor extends javax.swing.JFrame {
         Velg_pict.setIcon( new javax.swing.ImageIcon( getClass().getResource("/image/motor/Velg "+ Velg_cb.getSelectedItem() +" ("+ Warna_roda_cb.getSelectedIndex() +").png" )) );
     }//GEN-LAST:event_Warna_roda_cbActionPerformed
 
+    private void btn_selesaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_selesaiActionPerformed
+        Mesin_pages.setVisible(false);
+        Badan_pages.setVisible(false);
+        Roda_pages.setVisible(false);
+        Selesai_pages.setVisible(true);
+    }//GEN-LAST:event_btn_selesaiActionPerformed
+
+    private void Warna_Badan_cbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Warna_Badan_cbActionPerformed
+        if( Badan_matic_cb.getSelectedIndex() == 0 && Badan_cub_cb.getSelectedIndex() == 0 && Badan_sport_cb.getSelectedIndex() == 0){
+            Body_pict.setIcon( new javax.swing.ImageIcon(getClass().getResource("")));
+        }else
+        Body_pict.setIcon(new javax.swing.ImageIcon( getClass().getResource("/image/motor/Body "+ NamaMotor +" ("+ Warna_Badan_cb.getSelectedIndex() +").png" )));
+    }//GEN-LAST:event_Warna_Badan_cbActionPerformed
+
+    private void Badan_matic_cbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Badan_matic_cbActionPerformed
+        if(Badan_matic_cb.getSelectedIndex() == 0){
+            Body_pict.setIcon( new javax.swing.ImageIcon(getClass().getResource("")));
+        }else
+        Body_pict.setIcon( new javax.swing.ImageIcon( getClass().getResource("/image/motor/Body "+ Badan_matic_cb.getSelectedItem() +" ("+ Warna_Badan_cb.getSelectedIndex() +").png" )));
+
+        NamaMotor = Badan_matic_cb.getSelectedItem().toString();
+    }//GEN-LAST:event_Badan_matic_cbActionPerformed
+
+    private void Badan_cub_cbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Badan_cub_cbActionPerformed
+        if(Badan_cub_cb.getSelectedIndex() == 0){
+            Body_pict.setIcon( new javax.swing.ImageIcon(getClass().getResource("")));
+        }else
+        Body_pict.setIcon( new javax.swing.ImageIcon( getClass().getResource("/image/motor/Body "+ Badan_cub_cb.getSelectedItem() +" ("+ Warna_Badan_cb.getSelectedIndex() +").png" )));
+
+        NamaMotor = Badan_cub_cb.getSelectedItem().toString();
+    }//GEN-LAST:event_Badan_cub_cbActionPerformed
+
+    private void Badan_sport_cbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Badan_sport_cbActionPerformed
+        if(Badan_sport_cb.getSelectedIndex() == 0){
+            Body_pict.setIcon( new javax.swing.ImageIcon(getClass().getResource("")));
+        }else
+        Body_pict.setIcon( new javax.swing.ImageIcon( getClass().getResource("/image/motor/Body "+ Badan_sport_cb.getSelectedItem() +" ("+ Warna_Badan_cb.getSelectedIndex() +").png" )));
+
+        NamaMotor = Badan_sport_cb.getSelectedItem().toString();
+    }//GEN-LAST:event_Badan_sport_cbActionPerformed
+
+    private void Input_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Input_btnActionPerformed
+        if(getMerk() == null || getNama() == null || getJenis() == null 
+            || getKnalpot() == null || getCylinder() == 0 || getCC() == 0
+            || getBadan()== null || getTangki() == 0 || getSeat() == null || getBadanColor() == null
+            || getVelg() == null || getBan() == null || getDiameter() == 0 || getLebar() == 0 || getTiresColor() == null){
+            
+            JOptionPane.showMessageDialog(null, "Mohon masukan semua data");
+        }else
+            JOptionPane.showMessageDialog(null, "Terimakasih\nData anda telah diinput");
+    }//GEN-LAST:event_Input_btnActionPerformed
+
+    private void Knalpot_pictActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Knalpot_pictActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Knalpot_pictActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Badan_back;
+    private javax.swing.JButton Badan_back1;
     private javax.swing.JComboBox Badan_cub_cb;
     private javax.swing.JComboBox Badan_matic_cb;
     private javax.swing.JPanel Badan_pages;
@@ -833,16 +938,19 @@ public class PilihMotor extends javax.swing.JFrame {
     private javax.swing.JComboBox Cylinder_cb;
     private javax.swing.JTextField Diameter_tf;
     private javax.swing.JComboBox Headlamp_cb;
+    private javax.swing.JButton Input_btn;
     private javax.swing.JComboBox Knalpot_cb;
     private javax.swing.JButton Knalpot_pict;
     private javax.swing.JPanel Kustom_pages;
     private javax.swing.JTextField Lebar_tf;
+    private javax.swing.JComboBox Merek_cb;
     private javax.swing.JPanel Mesin_pages;
     private javax.swing.JPanel PilihMotor_pages;
     private javax.swing.JButton Roda_back;
     private javax.swing.JPanel Roda_pages;
     private javax.swing.JButton Roda_pict;
     private javax.swing.JComboBox Seat_cb;
+    private javax.swing.JPanel Selesai_pages;
     private javax.swing.JTextField Tangki_tf;
     private javax.swing.JComboBox Velg_cb;
     private javax.swing.JButton Velg_pict;
@@ -851,6 +959,7 @@ public class PilihMotor extends javax.swing.JFrame {
     private javax.swing.JButton background;
     private javax.swing.JButton background2;
     private javax.swing.JButton background3;
+    private javax.swing.JButton background4;
     private javax.swing.JButton btn_badan;
     private javax.swing.JButton btn_cub;
     private javax.swing.JButton btn_matic;
@@ -865,6 +974,7 @@ public class PilihMotor extends javax.swing.JFrame {
     private javax.swing.JComboBox cc_matic;
     private javax.swing.JComboBox cc_sport;
     private javax.swing.JButton cub;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -882,11 +992,13 @@ public class PilihMotor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JButton matic;
+    private javax.swing.JTextField nama_motor_tf;
     private javax.swing.JButton sport;
-    private javax.swing.JTextField tf_nama_motor;
     // End of variables declaration//GEN-END:variables
     
+    //Mengembalikan ke tampilan awal
     public void reset(){
         PilihMotor_pages.setVisible(true);
         Kustom_pages.setVisible(false);
@@ -898,6 +1010,114 @@ public class PilihMotor extends javax.swing.JFrame {
         sport.setVisible(false);
         cub.setVisible(false);
         
-        cc_default.setVisible(true);      
+        cc_default.setVisible(true);
+    }
+    
+///Pengembalian Pilihan Motor
+//Mengambalijan Motor
+    //Mengembalikan NAMA MOTOR
+    public String getNama(){
+        return nama_motor_tf.getText();
+    }
+    //mengembalikan MERK motor
+    public String getMerk(){
+        return Merek_cb.getSelectedItem().toString();
+    }
+    //mengembalikan JENIS motor
+    public String getJenis(){
+        return TipeMotor;
+    }
+
+//Mengembalikan Komponen MESIN    
+    //mengembalikan pilihan KNALPOT
+    public String getKnalpot(){
+        return Knalpot_cb.getSelectedItem().toString();
+    }
+    //mengembalikna KAPASITAS MESIN
+    public int getCC(){
+        if(TipeMotor == "Matic")
+            return Integer.parseInt( cc_matic.getSelectedItem().toString() );        
+        else if(TipeMotor == "Cub")
+            return Integer.parseInt( cc_cub.getSelectedItem().toString() );
+        else if(TipeMotor == "Sport")
+            return Integer.parseInt( cc_sport.getSelectedItem().toString() );
+        else
+            return 0;
+    }
+    //mengembalikan jumlah CYLINDER
+    public int getCylinder(){
+        return Integer.parseInt( Cylinder_cb.getSelectedItem().toString() );
+    }
+    
+//Mengambalikan Komponen BADAN    
+    //mengembalikan nama BADAN
+    public String getBadan(){
+        return NamaMotor;
+    }
+    //mengembalikan KAPASITAS TANGKI
+    public int getTangki(){
+        return Integer.parseInt( Tangki_tf.getText() );
+    }
+    //menmgembalikan pilihan HEADLAMP
+    public String getHeadlamp(){
+        return Headlamp_cb.getSelectedItem().toString();
+    }
+    //mengembalikan pilihan KURSI
+    public String getSeat(){
+        return Seat_cb.getSelectedItem().toString();
+    }
+    //mengembalikan warna BADAN
+    public String getBadanColor(){
+        int i = Warna_Badan_cb.getSelectedIndex();
+        switch(i){
+            case 0:
+                return "Putih";
+            case 1:
+                return "Hitam";
+            case 2:
+                return "Biru";                
+            case 3:
+                return "Hijau";
+            case 4:
+                return "Merah";
+            default:
+                return null;
+        }
+    }
+    
+//Mengembalikan Komponen RODA    
+    //mengambalikan pilihan VELG
+    public String getVelg(){
+        return Velg_cb.getSelectedItem().toString();
+    }
+    //mengambalikan pilihan BAN
+    public String getBan(){
+        return Ban_cb.getSelectedItem().toString();
+    }
+    //mengembalikan DIAMETER BAN
+    public int getDiameter(){
+        return Integer.parseInt( Diameter_tf.getText() );
+    }
+    //mengembalikan LEBAR BAN
+    public int getLebar(){
+        return Integer.parseInt( Lebar_tf.getText() );
+    }
+    //mengembalikna warna VELG
+    public String getTiresColor(){
+        int i = Warna_roda_cb.getSelectedIndex();
+        switch(i){
+            case 0:
+                return "Putih";
+            case 1:
+                return "Hitam";
+            case 2:
+                return "Emax";
+            case 3:
+                return "Perak";
+            case 4:
+                return "Merah";
+            default:
+                return null;
+        }        
     }
 }

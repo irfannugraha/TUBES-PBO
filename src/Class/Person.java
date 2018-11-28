@@ -1,14 +1,14 @@
-package tubes_KustomMotor;
+package Class;
 
-public class user {
-    private String username = "kustom";
-    private String password = "123";
+public class Person {
+    private String username;
+    private String password;
     
-    public user(String user, String pass){
+    public Person(String user, String pass) {
         username = user;
         password = pass;
     }
-
+        
     public String getUsername() {
         return username;
     }
@@ -16,5 +16,4 @@ public class user {
     public String getPassword() {
         return password;
     }
-    
 }

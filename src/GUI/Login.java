@@ -1,212 +1,139 @@
 package GUI;
 
-import tubes_KustomMotor.user;
-
-import java.awt.Color;
-import java.awt.event.ActionListener;
-import java.util.*;
-import javax.swing.JButton;
+import Class.*;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 public class Login extends javax.swing.JFrame {
-    
-    private user u;
-    public boolean boleh = false;
+
+    Application a = new Application();
     
     public Login() {
         initComponents();
+        login_pages.setVisible(true);
+        SignUp_pages.setVisible(false);        
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jLabel1 = new javax.swing.JLabel();
-        Judul = new java.awt.Label();
-        Username = new javax.swing.JTextField();
-        UsernameText = new javax.swing.JLabel();
-        passwordText = new javax.swing.JLabel();
-        password = new javax.swing.JPasswordField();
+        passBikin_tf = new javax.swing.JPasswordField();
+        SignUp_pages = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        signup = new javax.swing.JToggleButton();
-        login_btn = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        UsernamBikin_tf = new javax.swing.JTextField();
+        bikin_btn = new javax.swing.JButton();
+        login_pages = new javax.swing.JPanel();
+        Signup_btn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        Usernam_tf = new javax.swing.JTextField();
+        pass_tf = new javax.swing.JPasswordField();
+        Masukin_btn = new javax.swing.JButton();
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
-
-        jMenu3.setText("File");
-        jMenuBar2.add(jMenu3);
-
-        jMenu4.setText("Edit");
-        jMenuBar2.add(jMenu4);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jLabel1.setText("jLabel1");
+        passBikin_tf.setMinimumSize(new java.awt.Dimension(2147483647, 2147483647));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAutoRequestFocus(false);
-        setBackground(new java.awt.Color(102, 153, 255));
-        setBounds(new java.awt.Rectangle(0, 0, 0, 0));
-        setLocation(new java.awt.Point(0, 0));
+        setMaximumSize(new java.awt.Dimension(381, 300));
+        setMinimumSize(new java.awt.Dimension(381, 300));
+        getContentPane().setLayout(null);
 
-        Judul.setAlignment(java.awt.Label.CENTER);
-        Judul.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Judul.setFont(new java.awt.Font("Uni Sans Heavy CAPS", 0, 36)); // NOI18N
-        Judul.setName(""); // NOI18N
-        Judul.setText("Kustom Motor");
+        SignUp_pages.setLayout(null);
 
-        UsernameText.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        UsernameText.setText("Username");
+        jLabel3.setText("username");
+        SignUp_pages.add(jLabel3);
+        jLabel3.setBounds(10, 11, 47, 14);
 
-        passwordText.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        passwordText.setText("Password");
+        jLabel4.setText("pass");
+        SignUp_pages.add(jLabel4);
+        jLabel4.setBounds(10, 43, 22, 14);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel3.setText("Belum memiliki account? Silahkan buat account");
+        UsernamBikin_tf.setMinimumSize(new java.awt.Dimension(2147483647, 2147483647));
+        SignUp_pages.add(UsernamBikin_tf);
+        UsernamBikin_tf.setBounds(67, 11, 86, 20);
 
-        signup.setBackground(new java.awt.Color(255, 255, 255));
-        signup.setText("disini");
-        signup.setToolTipText("");
-
-        login_btn.setBackground(new java.awt.Color(255, 255, 255));
-        login_btn.setText("Login");
-        login_btn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                login_btnMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                login_btnMouseExited(evt);
-            }
-        });
-        login_btn.addActionListener(new java.awt.event.ActionListener() {
+        bikin_btn.setText("Bikin");
+        bikin_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                login_btnActionPerformed(evt);
+                bikin_btnActionPerformed(evt);
             }
         });
+        SignUp_pages.add(bikin_btn);
+        bikin_btn.setBounds(145, 87, 144, 159);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Judul, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(passwordText)
-                                    .addComponent(UsernameText))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(password)
-                                    .addComponent(Username, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(login_btn))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(signup)))
-                        .addGap(0, 76, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Judul, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(UsernameText))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(passwordText)
-                            .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(login_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(signup, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(178, Short.MAX_VALUE))
-        );
+        getContentPane().add(SignUp_pages);
+        SignUp_pages.setBounds(10, 11, 380, 270);
+
+        login_pages.setLayout(null);
+
+        Signup_btn.setText("SignUp");
+        Signup_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Signup_btnActionPerformed(evt);
+            }
+        });
+        login_pages.add(Signup_btn);
+        Signup_btn.setBounds(20, 155, 65, 23);
+
+        jLabel1.setText("username");
+        login_pages.add(jLabel1);
+        jLabel1.setBounds(10, 11, 47, 14);
+
+        jLabel2.setText("pass");
+        login_pages.add(jLabel2);
+        jLabel2.setBounds(10, 43, 22, 14);
+
+        Usernam_tf.setMinimumSize(new java.awt.Dimension(2147483647, 2147483647));
+        login_pages.add(Usernam_tf);
+        Usernam_tf.setBounds(67, 11, 86, 20);
+
+        pass_tf.setMinimumSize(new java.awt.Dimension(2147483647, 2147483647));
+        login_pages.add(pass_tf);
+        pass_tf.setBounds(67, 49, 300, 20);
+
+        Masukin_btn.setText("Masukin");
+        login_pages.add(Masukin_btn);
+        Masukin_btn.setBounds(145, 87, 144, 159);
+
+        getContentPane().add(login_pages);
+        login_pages.setBounds(10, 11, 0, 0);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void login_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_login_btnActionPerformed
-        if( Username.getText().equals(u.getUsername()) && password.getText().equals(u.getPassword()) ){
-            JOptionPane.showMessageDialog(null, "Bender");
-            boleh = true;
-            this.setVisible(false);
-        } else
-            JOptionPane.showMessageDialog(null, "salah goblok");
-    }//GEN-LAST:event_login_btnActionPerformed
+    private void Signup_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Signup_btnActionPerformed
+        login_pages.setVisible(false);
+        SignUp_pages.setVisible(true);
+    }//GEN-LAST:event_Signup_btnActionPerformed
 
-    private void login_btnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_login_btnMouseEntered
-        login_btn.setBackground(Color.GRAY);
-    }//GEN-LAST:event_login_btnMouseEntered
+    private void bikin_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bikin_btnActionPerformed
+        JOptionPane.showMessageDialog(null, getUsername());
+        a.CreateUser(getUsername(), getPass());
+    }//GEN-LAST:event_bikin_btnActionPerformed
 
-    private void login_btnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_login_btnMouseExited
-        login_btn.setBackground(Color.WHITE);
-    }//GEN-LAST:event_login_btnMouseExited
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Label Judul;
-    private javax.swing.JTextField Username;
-    private javax.swing.JLabel UsernameText;
+    private javax.swing.JButton Masukin_btn;
+    private javax.swing.JPanel SignUp_pages;
+    private javax.swing.JButton Signup_btn;
+    private javax.swing.JTextField UsernamBikin_tf;
+    private javax.swing.JTextField Usernam_tf;
+    private javax.swing.JButton bikin_btn;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JButton login_btn;
-    private javax.swing.JPasswordField password;
-    private javax.swing.JLabel passwordText;
-    private javax.swing.JToggleButton signup;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel login_pages;
+    private javax.swing.JPasswordField passBikin_tf;
+    private javax.swing.JPasswordField pass_tf;
     // End of variables declaration//GEN-END:variables
-    
-    //reset frame
-    public void resetall(){
-        Username.setText("");
-        password.setText("");
+
+    public String getUsername() {
+        return UsernamBikin_tf.getText();
     }
+
+    public String getPass() {
+        return passBikin_tf.getText();
+    }    
 }
