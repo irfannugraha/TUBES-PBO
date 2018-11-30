@@ -1,14 +1,14 @@
 package Class;
 
 public class Tires {
-    private String id;
+    private int id;
     private String Velg;
     private String Type;
     private int Diameter;
     private int Lebar;
     private String Color;
     
-    public Tires(String id, String Velg, String Type, int diameter, int lebar, String color) {
+    public Tires(int id, String Velg, String Type, int diameter, int lebar, String color) {
         this.id = id;
         this.Velg = Velg;
         this.Type = Type;
@@ -17,7 +17,7 @@ public class Tires {
         this.Color = color;
     }
 
-    public String getIdTires() {
+    public int getIdTires() {
         return id;
     }
     
@@ -39,5 +39,9 @@ public class Tires {
 
     public String getColor() {
         return Color;
+    }
+    
+    public String toString(){
+        return ("\nVelg : " + getVelg() + "\nWarna Velg : " + getColor() + "\nTipe Ban : " + getType() + "\nDiameter : " + getDiameter() + "\nLebar : " + getLebar() );
     }
 }

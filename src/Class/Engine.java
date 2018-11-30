@@ -1,19 +1,19 @@
 package Class;
 
 public class Engine {
-    private String id;
+    private int id;
     private int CC;
     private String Knalpot;
     private int Cylinder;
 
-    public Engine(String id, int cc, String knalpot, int cylinder) {
+    public Engine(int id, int cc, String knalpot, int cylinder) {
         this.id = id;
         this.CC = cc;
         this.Knalpot = knalpot;
         this.Cylinder = cylinder;
     }
 
-    public String getIdEngine() {
+    public int getIdEngine() {
         return id;
     }
 
@@ -28,4 +28,8 @@ public class Engine {
     public int getCylinder() {
         return Cylinder;
     }  
+    
+    public String toString(){
+        return ( "\nCC : " + getCC() + "\nKnalpot : " + getKnalpot() + "\nCylinder : " + getCylinder() );
+    }
 }

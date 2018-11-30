@@ -1,14 +1,14 @@
 package Class;
 
 public class Body {
-    private String id;
+    private int id;
     private String Badan;
     private int Tangki;
     private String Headlamp;
-    private int Seat;
+    private String Seat;
     private String Color;
     
-    public Body(String id, String Badan, int Tangki, String Headlamp, int Seat, String color) {
+    public Body(int id, String Badan, int Tangki, String Headlamp, String Seat, String color) {
         this.id = id;
         this.Badan = Badan;
         this.Tangki = Tangki;
@@ -17,7 +17,7 @@ public class Body {
         this.Color = color;
     }
 
-    public String getIdBody() {
+    public int getIdBody() {
         return id;
     }
     
@@ -33,11 +33,15 @@ public class Body {
         return Headlamp;
     }
 
-    public int getSeat() {
+    public String getSeat() {
         return Seat;
     }
 
     public String getColor() {
         return Color;
+    }
+    
+    public String toString(){
+        return ( "\nBadan : " + getBadan() + "\nWarna Badan : " + getColor() + "\nTangki : " + getTangki() + "\nHeadlamp : " + getHeadlamp() + "\nSeat : " + getSeat() );
     }
 }

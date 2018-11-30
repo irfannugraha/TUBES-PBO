@@ -10,4 +10,8 @@ public class User extends Person {
     public void addMotor(Motor m) {
         this.m = m;
     }    
+    
+    public String toString(){
+        return ("\nUsername : " + getUsername() ); //"\npass : " + getPassword());
+    }
 }
