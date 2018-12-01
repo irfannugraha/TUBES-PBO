@@ -48,8 +48,8 @@ public class Database {
         }
     }
     
-    public void saveKepemilikan(String u, String m ){
-        String query = "insert into kepemilikan values ('"+ u + "', '" + m + "');";
+    public void saveKepemilikan(String u, String m, int e){
+        String query = "insert into kepemilikan values ('"+ u + "', '" + m + "', '" + e + "');";
         try {
             Statement s = con.createStatement();
             s.execute(query);
@@ -251,7 +251,7 @@ public class Database {
         ArrayList<String> a = new ArrayList<>();
         String query;
         if(username == null)
-            query = "select distinct nama from motor;";
+            query = "select nama from motor;";
         else
             query = "select distinct namaMotor from kepemilikan where username = '" + username + "';";
         try{
@@ -308,6 +308,25 @@ public class Database {
     }
     
  
+    public boolean CekKepemilikanEditable(String nama){
+        String query = "select editable from kepemilikan where namaMotor = '" + nama + "';";
+        try{
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            int n = 0;
+            while (rs.next()){
+                n = rs.getInt(1);
+            }
+            if(n == 0)
+                return false;
+            else
+                return true;
+        } catch (Exception e){
+            System.out.println("(!!!)Load gagal;");
+            return false;
+        }
+    }
+    
     public boolean CekKepemilikan(String nama){
         String query = "select count(namaMotor) from kepemilikan where namaMotor = '" + nama + "';";
         try{

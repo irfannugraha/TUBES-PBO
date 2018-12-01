@@ -2,6 +2,7 @@ package Class;
 
 import GUI.*;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 public class Application {
     
@@ -30,14 +31,15 @@ public class Application {
         d.saveTires(m.getTires());
         d.saveMotor(m, m.getEngine(), m.getBody() ,m.getTires());       
         
-        d.saveKepemilikan(user, m.getNama());
+        d.saveKepemilikan(user, m.getNama(), 1);
     }
     
-    public void UpdateMotor(Motor M){
-        
-        d.updateBody(M.getBody());
-        d.updateEngine(M.getEngine());
-        d.updateTires(M.getTires());
+    public void UpdateMotor(Motor M, String nama){
+        if(d.CekKepemilikanEditable(M.getNama()) == true){
+            d.updateBody(M.getBody());
+            d.updateEngine(M.getEngine());
+            d.updateTires(M.getTires());
+        }
     }
     
     public void DeleteMotor(String m){
@@ -55,6 +57,7 @@ public class Application {
             d.deleteKepemilikanMotor(m);
         }else
             d.deleteKepemilikanUserMotor(u,m);
+        JOptionPane.showMessageDialog(null, "Delete berhasil");
     }
     
 //CEK data            

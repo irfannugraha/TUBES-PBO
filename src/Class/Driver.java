@@ -2,12 +2,15 @@ package Class;
 
 import GUI.*;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class Driver{
     
     public static void main(String[] args) {
         Application a = new Application();
         Controller c = new Controller(a);
+        
+        //String input = JOptionPane.showInputDialog("Inputkan");
         
         //PilihMotor p = new PilihMotor();
         
@@ -32,6 +35,11 @@ public class Driver{
         //m.CreateBody(0, "Badan", 0, "Headlamp", "Seat", "warna");
         //m.CreateEngine(0, 0, "knalpot", 0);
         //m.CreateTires(0, "Velg", "Type", 0, 0, "warna");
-
+        
+        //Motor n = m;
+        //n = new Motor("koko", m.getNama(), m.getJenis());
+        
+        //System.out.println(m.getBody().getBadan() + " " + m.getNama());
+        
     }
 }

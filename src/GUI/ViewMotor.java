@@ -29,11 +29,12 @@ public class ViewMotor extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         user_cb = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
-        MotorUser_cb = new javax.swing.JComboBox<>();
         MotorAdmin_cb = new javax.swing.JComboBox<>();
+        MotorUser_cb = new javax.swing.JComboBox<>();
         Delete_btn = new javax.swing.JButton();
         Download_btn = new javax.swing.JButton();
         Update_btn = new javax.swing.JButton();
+        UpdateLain_btn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         KomponenList_ta = new javax.swing.JTextArea();
         DeleteUser_btn = new javax.swing.JButton();
@@ -66,6 +67,7 @@ public class ViewMotor extends javax.swing.JFrame {
         Exit_btn.setBorder(null);
         Exit_btn.setBorderPainted(false);
         Exit_btn.setContentAreaFilled(false);
+        Exit_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menubar_pages.add(Exit_btn);
         Exit_btn.setBounds(670, 0, 30, 30);
 
@@ -85,6 +87,7 @@ public class ViewMotor extends javax.swing.JFrame {
         user_cb.setBackground(new java.awt.Color(0, 0, 0));
         user_cb.setForeground(new java.awt.Color(255, 255, 255));
         user_cb.setMaximumRowCount(100);
+        user_cb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Lainnya>" }));
         user_cb.setBorder(null);
         Selesai_pages.add(user_cb);
         user_cb.setBounds(110, 30, 140, 20);
@@ -96,17 +99,17 @@ public class ViewMotor extends javax.swing.JFrame {
         Selesai_pages.add(jLabel5);
         jLabel5.setBounds(0, 70, 100, 20);
 
-        MotorUser_cb.setBackground(new java.awt.Color(0, 0, 0));
-        MotorUser_cb.setForeground(new java.awt.Color(255, 255, 255));
-        MotorUser_cb.setBorder(null);
-        Selesai_pages.add(MotorUser_cb);
-        MotorUser_cb.setBounds(110, 70, 140, 20);
-
         MotorAdmin_cb.setBackground(new java.awt.Color(0, 0, 0));
         MotorAdmin_cb.setForeground(new java.awt.Color(255, 255, 255));
         MotorAdmin_cb.setBorder(null);
         Selesai_pages.add(MotorAdmin_cb);
         MotorAdmin_cb.setBounds(110, 70, 140, 20);
+
+        MotorUser_cb.setBackground(new java.awt.Color(0, 0, 0));
+        MotorUser_cb.setForeground(new java.awt.Color(255, 255, 255));
+        MotorUser_cb.setBorder(null);
+        Selesai_pages.add(MotorUser_cb);
+        MotorUser_cb.setBounds(110, 70, 140, 20);
 
         Delete_btn.setBackground(new java.awt.Color(0, 0, 0));
         Delete_btn.setForeground(new java.awt.Color(255, 255, 255));
@@ -114,6 +117,7 @@ public class ViewMotor extends javax.swing.JFrame {
         Delete_btn.setBorder(null);
         Delete_btn.setBorderPainted(false);
         Delete_btn.setContentAreaFilled(false);
+        Delete_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Selesai_pages.add(Delete_btn);
         Delete_btn.setBounds(200, 140, 30, 30);
 
@@ -123,6 +127,7 @@ public class ViewMotor extends javax.swing.JFrame {
         Download_btn.setBorder(null);
         Download_btn.setBorderPainted(false);
         Download_btn.setContentAreaFilled(false);
+        Download_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Selesai_pages.add(Download_btn);
         Download_btn.setBounds(120, 140, 30, 30);
 
@@ -132,9 +137,19 @@ public class ViewMotor extends javax.swing.JFrame {
         Update_btn.setBorder(null);
         Update_btn.setBorderPainted(false);
         Update_btn.setContentAreaFilled(false);
-        Update_btn.setOpaque(false);
+        Update_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Selesai_pages.add(Update_btn);
         Update_btn.setBounds(40, 140, 30, 30);
+
+        UpdateLain_btn.setBackground(new java.awt.Color(0, 0, 0));
+        UpdateLain_btn.setForeground(new java.awt.Color(255, 255, 255));
+        UpdateLain_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Logo_edit.png"))); // NOI18N
+        UpdateLain_btn.setBorder(null);
+        UpdateLain_btn.setBorderPainted(false);
+        UpdateLain_btn.setContentAreaFilled(false);
+        UpdateLain_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Selesai_pages.add(UpdateLain_btn);
+        UpdateLain_btn.setBounds(40, 140, 30, 30);
 
         KomponenList_ta.setEditable(false);
         KomponenList_ta.setBackground(new java.awt.Color(0, 0, 0));
@@ -155,6 +170,7 @@ public class ViewMotor extends javax.swing.JFrame {
         DeleteUser_btn.setBorder(null);
         DeleteUser_btn.setBorderPainted(false);
         DeleteUser_btn.setContentAreaFilled(false);
+        DeleteUser_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Selesai_pages.add(DeleteUser_btn);
         DeleteUser_btn.setBounds(30, 140, 60, 30);
 
@@ -165,6 +181,7 @@ public class ViewMotor extends javax.swing.JFrame {
         DeleteMotor_btn.setBorder(null);
         DeleteMotor_btn.setBorderPainted(false);
         DeleteMotor_btn.setContentAreaFilled(false);
+        DeleteMotor_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Selesai_pages.add(DeleteMotor_btn);
         DeleteMotor_btn.setBounds(110, 140, 70, 30);
 
@@ -275,6 +292,7 @@ public class ViewMotor extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> MotorUser_cb;
     private javax.swing.JButton Roda_pict;
     private javax.swing.JPanel Selesai_pages;
+    private javax.swing.JButton UpdateLain_btn;
     private javax.swing.JButton Update_btn;
     private javax.swing.JButton Velg_pict;
     private javax.swing.JButton background3;
@@ -287,8 +305,17 @@ public class ViewMotor extends javax.swing.JFrame {
     
     //Mengembalikan ke tampilan awal
     public void reset_pages(){
-        MotorUser_cb.setVisible(true);
+        String[] s = new String[1];
+        //MotorUser_cb.setVisible(true);
         KomponenList_ta.setText("");
+       
+        MotorUser_cb.setModel( new DefaultComboBoxModel( s ) );
+        MotorAdmin_cb.setModel( new DefaultComboBoxModel( s ) );
+        
+        Body_pict.setIcon( null );
+        Velg_pict.setIcon( null );
+        Roda_pict.setIcon( null );
+        Knalpot_pict.setIcon( null );        
     }
     
     public void set_pages(String input){
@@ -351,8 +378,10 @@ public class ViewMotor extends javax.swing.JFrame {
         MotorUser_cb.setModel( new DefaultComboBoxModel( a.toArray()) );
     }
     
-    public void setUserList (ArrayList<String> a){
+    public void setUserList (ArrayList<String> a, String input){
         user_cb.setModel( new DefaultComboBoxModel( a.toArray() ));
+        if(input == "user")
+            user_cb.addItem("<Lainnya>");
     }
     
     public void setKomponenList(String s){
@@ -378,9 +407,13 @@ public class ViewMotor extends javax.swing.JFrame {
         Roda_pict.setIcon( new javax.swing.ImageIcon( getClass().getResource("/image/motor/Ban "+ m.getTires().getType() +".png" )) );
         Knalpot_pict.setIcon( new javax.swing.ImageIcon(getClass().getResource("/image/motor/Knalpot "+ m.getEngine().getKnalpot() +".png")));
     }
+
     
+    public JComboBox<String> getMotorAdmin_cb() {
+        return MotorAdmin_cb;
+    }
     
-    public JComboBox<String> getMotor_cb() {
+    public JComboBox<String> getMotorUser_cb() {
         return MotorUser_cb;
     }
 
@@ -404,6 +437,10 @@ public class ViewMotor extends javax.swing.JFrame {
         return Update_btn;
     }
 
+    public JButton getUpdateLain_btn() {
+        return UpdateLain_btn;
+    }
+
     public JButton getDownload_btn() {
         return Download_btn;
     }
@@ -415,8 +452,10 @@ public class ViewMotor extends javax.swing.JFrame {
     public void addActionListener(ActionListener e){
         getDelete_btn().addActionListener(e);
         getUpdate_btn().addActionListener(e);
+        getUpdateLain_btn().addActionListener(e);
         getUser_cb().addActionListener(e);
-        getMotor_cb().addActionListener(e);
+        getMotorUser_cb().addActionListener(e);
+        getMotorAdmin_cb().addActionListener(e);
         getDownload_btn().addActionListener(e);
         getDelete_btn().addActionListener(e);
         getDeleteMotor_btn().addActionListener(e);
