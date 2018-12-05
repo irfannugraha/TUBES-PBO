@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Database {
     private Connection con = null;
     
-    
+//menyambungkan ke database
     public void connect(){
         try{
             String url = "jdbc:mysql://localhost/kostumisasi";
@@ -23,7 +23,9 @@ public class Database {
             ex.printStackTrace();
         }
     }
-
+    
+ //melakukan save data pada database
+    //save data kedalam tabel ADMIN
     public void saveAdmin(Admin a ){
         String query = "insert into admin values ('"+ a.getUsername() +"', '" + a.getPassword() + "');";
         try {
@@ -35,7 +37,7 @@ public class Database {
             System.out.println(query);
         }
     }        
-    
+    //save data kedalam tabel USER
     public void saveUser(User u){
         String query = "insert into user values ('"+ u.getUsername() + "', '" + u.getPassword() + "');";
         try {
@@ -47,7 +49,7 @@ public class Database {
             System.out.println(query);
         }
     }
-    
+    //save data kedalam tabel RELASI KEPEMILIKAN
     public void saveKepemilikan(String u, String m, int e){
         String query = "insert into kepemilikan values ('"+ u + "', '" + m + "', '" + e + "');";
         try {
@@ -59,7 +61,7 @@ public class Database {
             System.out.println(query);
         }
     }
-    
+    //save data kedalam tabel MOTOR
     public void saveMotor(Motor m, Engine e, Body b, Tires t){
         String query = "insert into motor values ( '" +m.getNama()+ "', '"+ m.getMerk() +"', '"+ m.getJenis() + "', '" + e.getIdEngine() + "', '" + b.getIdBody() + "', '" + t.getIdTires() + "');";
         try {
@@ -71,7 +73,7 @@ public class Database {
             System.out.println(query);
         }
     }
-    
+    //save data kedalam tabel ENGINE
     public void saveEngine(Engine e ){
         String query = "insert into engine values ('"+ e.getIdEngine() +"','" + e.getCC() + "','" + e.getKnalpot() +"','"+ e.getCylinder() + "');";
         try {
@@ -83,7 +85,7 @@ public class Database {
             System.out.println(query);
         }
     }   
-    
+    //save data kedalam tabel BODY
     public void saveBody(Body b ){
         String query = "insert into body values ('"+ b.getIdBody() +"', '" + b.getBadan() + "', '"+ b.getTangki() +"', '"+ b.getHeadlamp() +"', '" + b.getSeat() +"', '"+ b.getColor() + "');";
         try {
@@ -95,7 +97,7 @@ public class Database {
             System.out.println(query);
         }
     }    
-    
+    //save data kedalam tabel TIRES
     public void saveTires(Tires t ){
         String query = "insert into tires values ('"+ t.getIdTires()+"', '" + t.getVelg() + "', '"+ t.getType() +"', '"+ t.getDiameter() +"', '" + t.getLebar() +"', '"+ t.getColor() + "');";
         try {
@@ -108,7 +110,8 @@ public class Database {
         }
     }
     
-    
+//melakukan pengambilan data dari database
+    //mengambil data USER berdasarkan USERNAME
     public User loadUserId (String username){
         String query = "select * from user where username = '" + username + "';";
         try{
@@ -129,7 +132,7 @@ public class Database {
             return null;
         }
     }
-    
+    //mengambil data MOTOR berdasarkan NAMA MOTOR
     public Motor loadMotorId (String Id){
         try{
             Statement stmt = con.createStatement();
@@ -161,7 +164,7 @@ public class Database {
             return null;
         }
     }
-    
+    //mengambil data ENGINE berdasarkan ID
     public Engine loadEngineId (int Id){
         String query = "select * from engine where id = '" + Id + "';";
         try{
@@ -182,7 +185,7 @@ public class Database {
             return null;
         }
     }
-    
+    //mengambil data BODY berdasarkan ID
     public Body loadBodyId (int Id){
         try{
             Statement stmt = con.createStatement();
@@ -205,7 +208,7 @@ public class Database {
             return null;
         }
     }
-    
+    //mengambil data TIRES berdasarkan ID
     public Tires loadTiresId (int Id){
         try{
             Statement stmt = con.createStatement();
@@ -228,7 +231,7 @@ public class Database {
             return null;
         }
     }
-
+    //mengambil list USERNAME dari tabel USER
     public ArrayList<String> loadUserList(){
         ArrayList<String> a = new ArrayList<>();
         String query = "select username from user;";
@@ -246,7 +249,7 @@ public class Database {
             return null;
         }
     }
-    
+    //mengambil list NAMA MOTOR dari tabel MOTOR
     public ArrayList<String> loadMotorList (String username){
         ArrayList<String> a = new ArrayList<>();
         String query;
@@ -270,7 +273,8 @@ public class Database {
         }
     }    
     
-    
+//Melakukan pembaruan pada data
+    //memperbarui data ENGINE
     public void updateEngine( Engine e ){
         String query = "update engine set CC = '"+ e.getCC() + "', knalpot = '" + e.getKnalpot() +"', cylinder = '"+ e.getCylinder() + "' where id = '" + e.getIdEngine() + "';";
         try {
@@ -282,7 +286,7 @@ public class Database {
             System.out.println(query);
         }
     }
-    
+    //memperbarui data BODY
     public void updateBody( Body b ){
         String query = "update body set badan = '"+ b.getBadan() + "', tangki = '" + b.getTangki() +"', headlamp = '" + b.getHeadlamp() + "', seat = '" + b.getSeat() + "', color = '" + b.getColor() + "' where id = '" + b.getIdBody() + "';";
         try {
@@ -294,7 +298,7 @@ public class Database {
             System.out.println(query);
         }
     }   
-    
+    //memperbarui data TIRES
     public void updateTires( Tires t ){
         String query = "update tires set velg = '"+ t.getVelg() + "', tipe = '" + t.getType() +"', diameter = '" + t.getDiameter() + "', lebar = '" + t.getLebar() + "', color = '" + t.getColor() + "' where id = '" + t.getIdTires() + "';";
         try {
@@ -307,7 +311,8 @@ public class Database {
         }
     }
     
- 
+//memeriksa ketersediaan data
+    //memeriksa data EDITABLE pada tabel RELASI kepemiliken
     public boolean CekKepemilikanEditable(String nama){
         String query = "select editable from kepemilikan where namaMotor = '" + nama + "';";
         try{
@@ -326,7 +331,7 @@ public class Database {
             return false;
         }
     }
-    
+    //memeriksa USER yang memakai MOTOR dengan NAMA MOTOR tertentu
     public boolean CekKepemilikan(String nama){
         String query = "select count(namaMotor) from kepemilikan where namaMotor = '" + nama + "';";
         try{
@@ -345,7 +350,7 @@ public class Database {
             return false;
         }
     }    
-    
+    //memeriksa data USER atau ADMIN berdasarkan USERNAME
     public boolean CekPerson(String input, String username, String password){
         String query;
         if(password == null)
@@ -368,7 +373,7 @@ public class Database {
             return false;
         }
     }
-    
+    //memeriksa data MOTOR berdasarkan NAMA MOTOR
     public boolean CekMotor(String nama){
         String query;
         query = "select nama from motor where nama = '" + nama + "' ;";
@@ -389,7 +394,7 @@ public class Database {
         }
     }     
     
-    
+    //mendapatkan data id suatu KOMPONEN dari NAMA MOTOR
     public int getIdKomponen(String input, String nama){
         String query = "select id" + input + " from motor where nama = '" + nama + "' ;";
         try{
@@ -406,7 +411,7 @@ public class Database {
             return 0;
         } 
     }
-    
+    //mendapatkan data id terakhir dari suatu KOMPONEN
     public int getLastId(String input){
         String query = "select max(id) from " + input + " ;";
         try{
@@ -425,7 +430,9 @@ public class Database {
             return 0;
         }    
     }
-    
+ 
+//menghapus data
+    //menghapus data user
     public void deleteUser(User u){
         try{
             String query = "delete from user where username = '" + u.getUsername() + "';";
@@ -437,7 +444,7 @@ public class Database {
             ex.printStackTrace();
         }
     }
-    
+    //mengapus RELASI antara motor dan user melaui NAMA MOTOR
     public void deleteKepemilikanMotor(String m){
         String query = "delete from kepemilikan where namaMotor = '" + m + "'; ";
         try{
@@ -450,7 +457,7 @@ public class Database {
             ex.printStackTrace();
         }
     }
-    
+    //mengapus RELASI antara motor dan user melaui USERNAME
     public void deleteKepemilikanUser(String m){
         String query = "delete from kepemilikan where username = '" + m + "'; ";
         try{
@@ -463,7 +470,7 @@ public class Database {
             ex.printStackTrace();
         }
     }
-    
+    //mengapus RELASI antara motor dan user melaui NAMA MOTOR dan USERNAME
     public void deleteKepemilikanUserMotor(String u, String m){
         String query = "delete from kepemilikan where username = '" + u + "' and namaMotor = '" + m + "';";
         try{
@@ -476,7 +483,7 @@ public class Database {
             ex.printStackTrace();
         }
     }    
-    
+    //menghapus data MOTOR dan KOMPONENNYA
     public void deleteMotor(Motor m){
         String query = "delete from motor where nama = '" + m.getNama() + "'; ";
         try{
@@ -493,7 +500,7 @@ public class Database {
             ex.printStackTrace();
         }
     }    
-    
+    //menghapus data KOMPONEN
     public void deleteKomponen(String input, int i){
         String query = "delete from " + input + " where id = '" + i + "';";
         try{

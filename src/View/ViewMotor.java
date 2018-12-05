@@ -1,4 +1,4 @@
-package GUI;
+package View;
 
 import Class.*;
 import java.awt.event.ActionListener;
@@ -34,7 +34,6 @@ public class ViewMotor extends javax.swing.JFrame {
         Delete_btn = new javax.swing.JButton();
         Download_btn = new javax.swing.JButton();
         Update_btn = new javax.swing.JButton();
-        UpdateLain_btn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         KomponenList_ta = new javax.swing.JTextArea();
         DeleteUser_btn = new javax.swing.JButton();
@@ -53,7 +52,6 @@ public class ViewMotor extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
         setSize(new java.awt.Dimension(717, 473));
-        setType(java.awt.Window.Type.UTILITY);
         getContentPane().setLayout(null);
 
         Kustom_pages.setLayout(null);
@@ -101,12 +99,14 @@ public class ViewMotor extends javax.swing.JFrame {
 
         MotorAdmin_cb.setBackground(new java.awt.Color(0, 0, 0));
         MotorAdmin_cb.setForeground(new java.awt.Color(255, 255, 255));
+        MotorAdmin_cb.setMaximumRowCount(100);
         MotorAdmin_cb.setBorder(null);
         Selesai_pages.add(MotorAdmin_cb);
         MotorAdmin_cb.setBounds(110, 70, 140, 20);
 
         MotorUser_cb.setBackground(new java.awt.Color(0, 0, 0));
         MotorUser_cb.setForeground(new java.awt.Color(255, 255, 255));
+        MotorUser_cb.setMaximumRowCount(100);
         MotorUser_cb.setBorder(null);
         Selesai_pages.add(MotorUser_cb);
         MotorUser_cb.setBounds(110, 70, 140, 20);
@@ -140,16 +140,6 @@ public class ViewMotor extends javax.swing.JFrame {
         Update_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Selesai_pages.add(Update_btn);
         Update_btn.setBounds(40, 140, 30, 30);
-
-        UpdateLain_btn.setBackground(new java.awt.Color(0, 0, 0));
-        UpdateLain_btn.setForeground(new java.awt.Color(255, 255, 255));
-        UpdateLain_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Logo_edit.png"))); // NOI18N
-        UpdateLain_btn.setBorder(null);
-        UpdateLain_btn.setBorderPainted(false);
-        UpdateLain_btn.setContentAreaFilled(false);
-        UpdateLain_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Selesai_pages.add(UpdateLain_btn);
-        UpdateLain_btn.setBounds(40, 140, 30, 30);
 
         KomponenList_ta.setEditable(false);
         KomponenList_ta.setBackground(new java.awt.Color(0, 0, 0));
@@ -292,7 +282,6 @@ public class ViewMotor extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> MotorUser_cb;
     private javax.swing.JButton Roda_pict;
     private javax.swing.JPanel Selesai_pages;
-    private javax.swing.JButton UpdateLain_btn;
     private javax.swing.JButton Update_btn;
     private javax.swing.JButton Velg_pict;
     private javax.swing.JButton background3;
@@ -317,7 +306,7 @@ public class ViewMotor extends javax.swing.JFrame {
         Roda_pict.setIcon( null );
         Knalpot_pict.setIcon( null );        
     }
-    
+    //
     public void set_pages(String input){
         if(input == "admin"){
             DeleteMotor_btn.setVisible(true);
@@ -326,6 +315,7 @@ public class ViewMotor extends javax.swing.JFrame {
             Download_btn.setVisible(false);
             MotorAdmin_cb.setVisible(true);
             MotorUser_cb.setVisible(false);
+            MotorUser_cb.setEnabled(false);
         }else if(input == "user"){
             DeleteMotor_btn.setVisible(false);
             DeleteUser_btn.setVisible(false);
@@ -333,9 +323,10 @@ public class ViewMotor extends javax.swing.JFrame {
             Download_btn.setVisible(true);            
             MotorAdmin_cb.setVisible(false);
             MotorUser_cb.setVisible(true);            
+            MotorAdmin_cb.setEnabled(false);
         }
     }
-    
+    //mengubah input WARNA BODY menjadi angka
     public int ColorBodytoInt(String color){
         switch(color){
             case "Putih":
@@ -352,7 +343,7 @@ public class ViewMotor extends javax.swing.JFrame {
                 return 5;
         }        
     }
-    
+    //mengubah input WARNA TIRES menjadi angka
     public int ColorTirestoInt(String color){
         switch(color){
             case "Putih":
@@ -369,29 +360,37 @@ public class ViewMotor extends javax.swing.JFrame {
                 return 5;
         }
     }    
-    
+    //mengatur list MOTOR pada combo box ADMIN
     public void setMotorAdminList(ArrayList<String> a){
         MotorAdmin_cb.setModel( new DefaultComboBoxModel( a.toArray() ));
     }
-    
+    //mengatur list MOTOR pada combo box USER
     public void setMotorUserList(ArrayList<String> a){
         MotorUser_cb.setModel( new DefaultComboBoxModel( a.toArray()) );
     }
-    
+    //mengatur list USER pada combo box
     public void setUserList (ArrayList<String> a, String input){
         user_cb.setModel( new DefaultComboBoxModel( a.toArray() ));
         if(input == "user")
             user_cb.addItem("<Lainnya>");
     }
-    
+    //mengatur list KOMPONEN pada text area sesuai dengan motor yang diinput
     public void setKomponenList(String s){
         KomponenList_ta.setText(s);
     }
+    //mengatur gambar MOTOR sesuai yang dipilih
+    public void setPict(Motor m){
+        Body_pict.setIcon( new javax.swing.ImageIcon( getClass().getResource("/image/motor/Body "+ m.getBody().getBadan() +" ("+ ColorBodytoInt(m.getBody().getColor()) +").png" )));
+        Velg_pict.setIcon( new javax.swing.ImageIcon( getClass().getResource("/image/motor/Velg "+ m.getTires().getVelg() +" ("+ ColorTirestoInt(m.getTires().getColor()) +").png" )));
+        Roda_pict.setIcon( new javax.swing.ImageIcon( getClass().getResource("/image/motor/Ban "+ m.getTires().getType() +".png" )) );
+        Knalpot_pict.setIcon( new javax.swing.ImageIcon(getClass().getResource("/image/motor/Knalpot "+ m.getEngine().getKnalpot() +".png")));
+    }    
     
+    //mendapatkan USER yang dipilih
     public String getUser(){
         return user_cb.getSelectedItem().toString();
     }
-    
+    //mendapatkan MOTOR yang dipilih
     public String getMotor(String person){
         if(person == "user")
             return MotorUser_cb.getSelectedItem().toString();
@@ -401,14 +400,7 @@ public class ViewMotor extends javax.swing.JFrame {
             return null;
     }
 
-    public void setPict(Motor m){
-        Body_pict.setIcon( new javax.swing.ImageIcon( getClass().getResource("/image/motor/Body "+ m.getBody().getBadan() +" ("+ ColorBodytoInt(m.getBody().getColor()) +").png" )));
-        Velg_pict.setIcon( new javax.swing.ImageIcon( getClass().getResource("/image/motor/Velg "+ m.getTires().getVelg() +" ("+ ColorTirestoInt(m.getTires().getColor()) +").png" )));
-        Roda_pict.setIcon( new javax.swing.ImageIcon( getClass().getResource("/image/motor/Ban "+ m.getTires().getType() +".png" )) );
-        Knalpot_pict.setIcon( new javax.swing.ImageIcon(getClass().getResource("/image/motor/Knalpot "+ m.getEngine().getKnalpot() +".png")));
-    }
-
-    
+//mengembalikan tekanan tombol dari pengguna
     public JComboBox<String> getMotorAdmin_cb() {
         return MotorAdmin_cb;
     }
@@ -437,10 +429,6 @@ public class ViewMotor extends javax.swing.JFrame {
         return Update_btn;
     }
 
-    public JButton getUpdateLain_btn() {
-        return UpdateLain_btn;
-    }
-
     public JButton getDownload_btn() {
         return Download_btn;
     }
@@ -452,7 +440,6 @@ public class ViewMotor extends javax.swing.JFrame {
     public void addActionListener(ActionListener e){
         getDelete_btn().addActionListener(e);
         getUpdate_btn().addActionListener(e);
-        getUpdateLain_btn().addActionListener(e);
         getUser_cb().addActionListener(e);
         getMotorUser_cb().addActionListener(e);
         getMotorAdmin_cb().addActionListener(e);

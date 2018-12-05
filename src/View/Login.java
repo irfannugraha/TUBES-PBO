@@ -1,4 +1,4 @@
-package GUI;
+package View;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -36,10 +36,8 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
-        setMaximumSize(new java.awt.Dimension(470, 480));
         setMinimumSize(new java.awt.Dimension(470, 480));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(470, 480));
         setResizable(false);
         setSize(new java.awt.Dimension(470, 480));
         getContentPane().setLayout(null);
@@ -55,6 +53,7 @@ public class Login extends javax.swing.JFrame {
         Exit_btn.setBorder(null);
         Exit_btn.setBorderPainted(false);
         Exit_btn.setContentAreaFilled(false);
+        Exit_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Exit_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Exit_btnActionPerformed(evt);
@@ -257,6 +256,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 
+    //mengatur ulang GUI LOGIN
     public void reset(){
         LogIn_pages.setVisible(true);
         SignUp_pages.setVisible(false);        
@@ -265,23 +265,24 @@ public class Login extends javax.swing.JFrame {
         UsernameSignUp_tf.setText(null);
         PasswordSignUp_tf.setText(null);
     }
-    
+    //mendapatkan isi USERNAME yang dimasukan user ketika LOGIN
     public String getLogInUsername() {
         return UsernameLogin_tf.getText();
     }
-
+    //mendapatkan isi PASSWORD yang dimasukan user ketika LOGIN
     public String getLogInPassword() {
         return PasswordLogin_tf.getText();
     }
-    
+    //mendapatkan isi USERNAME yang dimasukan user ketika MEMBUAT USER baru
     public String getSignUpUsername() {
         return UsernameSignUp_tf.getText();
     }
-
+    //mendapatkan isi PASSWORD yang dimasukan user ketika MEMBUAT USER baru
     public String getSignUpPassword() {
         return PasswordSignUp_tf.getText();
     }
-
+    
+//mengembalikan tekanan tombol dari pengguna    
     public JButton getLogIn_btn() {
         return LogIn_btn;
     }

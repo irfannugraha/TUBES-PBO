@@ -1,7 +1,12 @@
-package Class;
+package Controller;
 
+import Application.Application;
+import Class.Database;
+import Class.Motor;
+import View.Login;
+import View.ViewMotor;
+import View.PilihMotor;
 import java.awt.event.*;
-import GUI.*;
 import javax.swing.JOptionPane;
 
 public class Controller implements ActionListener{
@@ -30,6 +35,8 @@ public class Controller implements ActionListener{
         
         //Login Pages
         if(source.equals( l.getLogIn_btn() )){
+            vu.reset_pages();
+            p.pagesReset();
             if( a.CekPerson("admin", l.getLogInUsername(), l.getLogInPassword() ) == true ){
                 person = "admin";
                 JOptionPane.showMessageDialog(null, "Selamat datang admin");
@@ -37,7 +44,6 @@ public class Controller implements ActionListener{
                 vu.setVisible(true);
                 vu.setUserList( a.getUserList(), person );
                 vu.setMotorAdminList( a.getMotorList(null) );
-                //vu.reset_pages();
                 vu.getUpdate_btn().setVisible(false);
             } else if( a.CekPerson("user", l.getLogInUsername(), l.getLogInPassword() ) == true ){
                 person = "user";
@@ -46,11 +52,7 @@ public class Controller implements ActionListener{
                 l.setVisible(false);
                 p.getUpdate_btn().setVisible(false);
                 p.getInput_btn().setVisible(true);
-                vu.reset_pages();
-                /*if(source.equals( vu.getMotorUser_cb() )){
-                    vu.setPict(a.getMotor( vu.getMotor(person) ) );
-                    vu.setKomponenList( a.getMotorKomponen( a.getMotor( vu.getMotor(person) )) );
-                }*/               
+                vu.reset_pages();               
             } else
                 JOptionPane.showMessageDialog(null, "Maaf, Username atau password anda salah");
             vu.set_pages(person);
@@ -124,9 +126,12 @@ public class Controller implements ActionListener{
         }
         
         if(source.equals( p.getBtn_Exit() )){
-            p.setVisible(false);
-            l.setVisible(true);
-            l.reset();
+            int option = JOptionPane.showConfirmDialog(null, "Apakah anda yakin ingin keluar", "", JOptionPane.YES_NO_OPTION);
+            if(option == JOptionPane.YES_OPTION){            
+                p.setVisible(false);
+                l.setVisible(true);
+                l.reset();
+            }
         }
         
         //ViewMotor pages
@@ -171,7 +176,7 @@ public class Controller implements ActionListener{
         }
         
         if(source.equals( vu.getDeleteMotor_btn() )){
-            int option = JOptionPane.showConfirmDialog(null, "Apakah anda yakin ingin menghapus motor " + vu.getUser(), "", JOptionPane.YES_NO_OPTION);
+            int option = JOptionPane.showConfirmDialog(null, "Apakah anda yakin ingin menghapus motor " + vu.getMotor("person"), "", JOptionPane.YES_NO_OPTION);
             if(option == JOptionPane.YES_OPTION){              
                 a.DeleteMotor( vu.getMotor("admin") );
                 vu.setMotorAdminList( a.getMotorList(null) );            
@@ -184,17 +189,16 @@ public class Controller implements ActionListener{
         }        
         
         if(source.equals( vu.getUser_cb() )){
-            vu.reset_pages();
-            if( vu.getUser() == "<Lainnya>"){
-                vu.setMotorUserList( a.getMotorList(null) );
-            }else
-                vu.setMotorUserList( a.getMotorList(vu.getUser()) );
-            
             if(person == "user"){
                 if( l.getLogInUsername().equals( vu.getUser() ) ){
                     vu.getDelete_btn().setEnabled(true);
                     vu.getUpdate_btn().setEnabled(true);
-                    vu.getDownload_btn().setEnabled(false);
+                    vu.getDownload_btn().setEnabled(false);     
+                    vu.reset_pages();
+                    if( vu.getUser() == "<Lainnya>"){
+                        vu.setMotorUserList( a.getMotorList(null) );
+                    }else
+                        vu.setMotorUserList( a.getMotorList(vu.getUser()) );                    
                 }else{
                     vu.getDelete_btn().setEnabled(false);
                     vu.getUpdate_btn().setEnabled(false);
@@ -204,13 +208,12 @@ public class Controller implements ActionListener{
         }
         
         if(source.equals( vu.getExit_btn() )){
-            vu.setVisible(false);
-            l.setVisible(true);
-            l.reset();
+            int option = JOptionPane.showConfirmDialog(null, "Apakah anda yakin ingin keluar", "", JOptionPane.YES_NO_OPTION);
+            if(option == JOptionPane.YES_OPTION){
+                vu.setVisible(false);
+                l.setVisible(true);
+                l.reset();
+            }
         }
-    }
-    
-    public void mousePressed(MouseEvent m){
-        Object source = m.getSource();
     }
 }

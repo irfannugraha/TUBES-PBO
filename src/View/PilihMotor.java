@@ -1,4 +1,4 @@
-package GUI;
+package View;
 
 import Class.*;
 import java.awt.event.ActionListener;
@@ -95,7 +95,6 @@ public class PilihMotor extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
         setLocation(new java.awt.Point(0, 0));
-        setMaximumSize(new java.awt.Dimension(717, 473));
         setMinimumSize(new java.awt.Dimension(717, 473));
         setUndecorated(true);
         setResizable(false);
@@ -135,11 +134,6 @@ public class PilihMotor extends javax.swing.JFrame {
         btn_next.setBorderPainted(false);
         btn_next.setContentAreaFilled(false);
         btn_next.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_next.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_nextActionPerformed(evt);
-            }
-        });
         PilihMotor_pages.add(btn_next);
         btn_next.setBounds(650, 420, 30, 30);
 
@@ -799,7 +793,7 @@ public class PilihMotor extends javax.swing.JFrame {
 
 ///ACTION PERFORMED
 //Tampilan pemilihan tipe motor
-    //Mengubah UI ketika menekan tombol MATIC
+    //Mengubah TAMPILAN ketika menekan tombol MATIC
     private void btn_maticActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_maticActionPerformed
         matic.setVisible(true);
         cub.setVisible(false);
@@ -813,7 +807,7 @@ public class PilihMotor extends javax.swing.JFrame {
         
         TipeMotor = "Matic";
     }//GEN-LAST:event_btn_maticActionPerformed
-    //Mengubah UI ketika menekan tombol CUB
+    //Mengubah TAMPILAN ketika menekan tombol CUB
     private void btn_cubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cubActionPerformed
         matic.setVisible(false);
         cub.setVisible(true);
@@ -827,7 +821,7 @@ public class PilihMotor extends javax.swing.JFrame {
         
         TipeMotor = "Cub";
     }//GEN-LAST:event_btn_cubActionPerformed
-    //Mengubah UI ketika menekan tombol SPORT
+    //Mengubah TAMPILAN ketika menekan tombol SPORT
     private void btn_sportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sportActionPerformed
         matic.setVisible(false);
         cub.setVisible(false);
@@ -841,11 +835,8 @@ public class PilihMotor extends javax.swing.JFrame {
         
         TipeMotor = "Sport";
     }//GEN-LAST:event_btn_sportActionPerformed
-    //Mengubah UI ke tampilan memilih motor ketika user telah mengisi semuanya
-    private void btn_nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nextActionPerformed
 
-    }//GEN-LAST:event_btn_nextActionPerformed
-        
+       
 //Tampilan pemilihan komponen motor
     //Mengubah gambar KNALPOT sesuai pilihan user
     private void Knalpot_cbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Knalpot_cbActionPerformed
@@ -877,7 +868,7 @@ public class PilihMotor extends javax.swing.JFrame {
         Selesai_pages.setVisible(false);
     }//GEN-LAST:event_btn_mesinActionPerformed
 
-   //mengubah gambar VELG sesuai pilihan user
+    //mengubah gambar VELG sesuai pilihan user
     private void Velg_cbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Velg_cbActionPerformed
         if(Velg_cb.getSelectedIndex() == 0){
             Velg_pict.setIcon( new javax.swing.ImageIcon(getClass().getResource("")));
@@ -892,28 +883,28 @@ public class PilihMotor extends javax.swing.JFrame {
         Roda_pict.setIcon( new javax.swing.ImageIcon( getClass().getResource("/image/motor/Ban "+ Ban_cb.getSelectedItem() +".png" )) );
     }//GEN-LAST:event_Ban_cbActionPerformed
 
-   //mengubah WARNA RODA sesuai pilihan user
+    //mengubah WARNA RODA sesuai pilihan user
     private void Warna_roda_cbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Warna_roda_cbActionPerformed
         if(Velg_cb.getSelectedIndex() == 0){
             Velg_pict.setIcon( new javax.swing.ImageIcon(getClass().getResource("")));
         }else
         Velg_pict.setIcon( new javax.swing.ImageIcon( getClass().getResource("/image/motor/Velg "+ Velg_cb.getSelectedItem() +" ("+ Warna_roda_cb.getSelectedIndex() +").png" )) );
     }//GEN-LAST:event_Warna_roda_cbActionPerformed
-
+    
     private void btn_selesaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_selesaiActionPerformed
         Mesin_pages.setVisible(false);
         Badan_pages.setVisible(false);
         Roda_pages.setVisible(false);
         Selesai_pages.setVisible(true);
     }//GEN-LAST:event_btn_selesaiActionPerformed
-
+    //mengubah WARNA BADAN sesuai pilihan user
     private void Warna_Badan_cbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Warna_Badan_cbActionPerformed
         if( Badan_matic_cb.getSelectedIndex() == 0 && Badan_cub_cb.getSelectedIndex() == 0 && Badan_sport_cb.getSelectedIndex() == 0){
             Body_pict.setIcon( new javax.swing.ImageIcon(getClass().getResource("")));
         }else
         Body_pict.setIcon(new javax.swing.ImageIcon( getClass().getResource("/image/motor/Body "+ NamaMotor +" ("+ Warna_Badan_cb.getSelectedIndex() +").png" )));
     }//GEN-LAST:event_Warna_Badan_cbActionPerformed
-
+    //mengubah BENTUK BADAN ketika user memilih MATIC
     private void Badan_matic_cbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Badan_matic_cbActionPerformed
         if(Badan_matic_cb.getSelectedIndex() == 0){
             Body_pict.setIcon( new javax.swing.ImageIcon(getClass().getResource("")));
@@ -922,7 +913,7 @@ public class PilihMotor extends javax.swing.JFrame {
 
         NamaMotor = Badan_matic_cb.getSelectedItem().toString();
     }//GEN-LAST:event_Badan_matic_cbActionPerformed
-
+    //mengubah BENTUK BADAN ketika user memilih CUB
     private void Badan_cub_cbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Badan_cub_cbActionPerformed
         if(Badan_cub_cb.getSelectedIndex() == 0){
             Body_pict.setIcon( new javax.swing.ImageIcon(getClass().getResource("")));
@@ -931,7 +922,7 @@ public class PilihMotor extends javax.swing.JFrame {
 
         NamaMotor = Badan_cub_cb.getSelectedItem().toString();
     }//GEN-LAST:event_Badan_cub_cbActionPerformed
-
+    //mengubah BENTUK BADAN ketika user memilih SPORT
     private void Badan_sport_cbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Badan_sport_cbActionPerformed
         if(Badan_sport_cb.getSelectedIndex() == 0){
             Body_pict.setIcon( new javax.swing.ImageIcon(getClass().getResource("")));
@@ -1154,7 +1145,7 @@ public class PilihMotor extends javax.swing.JFrame {
         Diameter_tf.setText(null);
         Lebar_tf.setText(null);
     }
-    
+    //mengubah ke tampilan PILIH MOTOR
     public void toPilih(){
         PilihMotor_pages.setVisible(true);
         Kustom_pages.setVisible(false);
@@ -1163,7 +1154,7 @@ public class PilihMotor extends javax.swing.JFrame {
         Roda_pages.setVisible(false);
         btn_Exit.setVisible(false);
     }
-    
+    //mengubah ke tampilan KUSTOM MOTOR
     public void toKustom(String input){
         btn_Exit.setVisible(true);        
         PilihMotor_pages.setVisible(false);
@@ -1203,7 +1194,7 @@ public class PilihMotor extends javax.swing.JFrame {
                 break;
             }
     }
-    
+    //mengubah dari tampilan PILIH MOTOR ke yang lain
     public void Pilihto(){
         if(cc_default.isVisible() || (Merek_cb.getSelectedIndex() == 0) || (nama_motor_tf.getText() == null) ){
             JOptionPane.showMessageDialog(null, "Mohon isi semua data");
@@ -1213,13 +1204,12 @@ public class PilihMotor extends javax.swing.JFrame {
             toKustom(TipeMotor);
         }
     }
-
+    //mengatur tampilan KUSTOM sesuai MOTOR
     public void setExcistData(Motor m){
         Knalpot_cb.setSelectedItem( m.getEngine().getKnalpot() );
         Cylinder_cb.setSelectedIndex( m.getEngine().getCylinder() );
         switch(m.getJenis()){
             case "Matic":
-                System.out.println( m.getEngine().getCC() );
                 cc_matic.setSelectedItem( Integer.toString( m.getEngine().getCC() ) );
                 Badan_matic_cb.setSelectedItem( m.getBody().getBadan() );
                 break;
@@ -1249,7 +1239,7 @@ public class PilihMotor extends javax.swing.JFrame {
         //Roda_pict.setIcon( new javax.swing.ImageIcon( getClass().getResource("/image/motor/Ban "+ m.getTires().getType() +".png" )) );
         //Knalpot_pict.setIcon( new javax.swing.ImageIcon(getClass().getResource("/image/motor/Knalpot "+ m.getEngine().getKnalpot() +".png")));
     }    
-    
+    //memeriksa jika semua data telah diisi pada KUSTOM MOTOR
     public boolean cekData(){
         Boolean cek;
         if(getMerk() == null || getNama() == null || getJenis() == null 
@@ -1262,7 +1252,7 @@ public class PilihMotor extends javax.swing.JFrame {
         }        
     }
     
-//mengembalikan BUTTON    
+//mengembalikan tekanan tombol dari pengguna
     public JButton getBtn_next() {
         return btn_next;
     }
